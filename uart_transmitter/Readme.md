@@ -1,8 +1,6 @@
-<Daniel Nybo>
+# Daniel Nybo 
 
-**Uart Transmitter**
-
-**Approx 8 Hours Spent**
+**Uart Transmitter** - *Approx 8 Hours Spent*
 
 **Summary of Major Challenges**
 
@@ -10,7 +8,7 @@ The main challenges I faced were first just to remeber how to write HDL and some
 
 ## Assignment Specific Responses
 
-Resources:
+**Resources**:
 
 | Site Type         | Used | Fixed | Prohibited | Available | Util% |
 |-------------------|------|-------|------------|-----------|-------|
@@ -44,11 +42,11 @@ Resources:
 
 
 
-Warnings:
+**Warnings**:
 
 WARNING: [DRC CFGBVS-1] Missing CFGBVS and CONFIG_VOLTAGE Design Properties: Neither the CFGBVS nor CONFIG_VOLTAGE voltage property is set in the current_design.  Configuration bank voltage select (CFGBVS) must be set to VCCO or GND, and CONFIG_VOLTAGE must be set to the correct configuration voltage, in order to determine the I/O voltage support for the pins in bank 0. 
 
-Timing:
+**Timing**:
 
 WNS: 5.284ns
 
