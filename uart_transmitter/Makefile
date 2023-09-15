@@ -9,4 +9,4 @@ sim_top: tx.sv debounce.sv tx_top.sv
 gen_bit:
 	vivado -mode batch -source tx_synth.tcl
 clean: 
-	rm -rf *.bit *.rpt *.str *.jou *.pb *.log *.dir
+	rm -rf .Xil *.bit *.rpt *.str *.jou *.pb *.log *.dir
