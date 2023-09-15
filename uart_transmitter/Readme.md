@@ -1,1 +1,62 @@
-UART Transmitter lab directory contains all files relevant for the UART TX lab
+# <Daniel Nybo>
+
+**Uart Transmitter**
+
+**Approx 8 Hours Spent**
+
+**Summary of Major Challenges**
+
+The main challenges I faced were first just to remeber how to write HDL and some of the nuances of the language. I also spent some time learning how to complete a gitignore file as well as a makefile, and synth script.
+
+## Assignment Specific Responses
+
+Resources:
+
++-------------------------+------+-------+------------+-----------+-------+
+|        Site Type        | Used | Fixed | Prohibited | Available | Util% |
++-------------------------+------+-------+------------+-----------+-------+
+| Slice LUTs              |   39 |     0 |          0 |     63400 |  0.06 |
+|   LUT as Logic          |   39 |     0 |          0 |     63400 |  0.06 |
+|   LUT as Memory         |    0 |     0 |          0 |     19000 |  0.00 |
+| Slice Registers         |   47 |     0 |          0 |    126800 |  0.04 |
+|   Register as Flip Flop |   47 |     0 |          0 |    126800 |  0.04 |
+|   Register as Latch     |    0 |     0 |          0 |    126800 |  0.00 |
+| F7 Muxes                |    1 |     0 |          0 |     31700 | <0.01 |
+| F8 Muxes                |    0 |     0 |          0 |     15850 |  0.00 |
++-------------------------+------+-------+------------+-----------+-------+
+
++-----------------------------+------+-------+------------+-----------+-------+
+|          Site Type          | Used | Fixed | Prohibited | Available | Util% |
++-----------------------------+------+-------+------------+-----------+-------+
+| Bonded IOB                  |   21 |    21 |          0 |       210 | 10.00 |
+|   IOB Master Pads           |   10 |       |            |           |       |
+|   IOB Slave Pads            |   11 |       |            |           |       |
+| Bonded IPADs                |    0 |     0 |          0 |         2 |  0.00 |
+| PHY_CONTROL                 |    0 |     0 |          0 |         6 |  0.00 |
+| PHASER_REF                  |    0 |     0 |          0 |         6 |  0.00 |
+| OUT_FIFO                    |    0 |     0 |          0 |        24 |  0.00 |
+| IN_FIFO                     |    0 |     0 |          0 |        24 |  0.00 |
+| IDELAYCTRL                  |    0 |     0 |          0 |         6 |  0.00 |
+| IBUFDS                      |    0 |     0 |          0 |       202 |  0.00 |
+| PHASER_OUT/PHASER_OUT_PHY   |    0 |     0 |          0 |        24 |  0.00 |
+| PHASER_IN/PHASER_IN_PHY     |    0 |     0 |          0 |        24 |  0.00 |
+| IDELAYE2/IDELAYE2_FINEDELAY |    0 |     0 |          0 |       300 |  0.00 |
+| ILOGIC                      |    0 |     0 |          0 |       210 |  0.00 |
+| OLOGIC                      |    0 |     0 |          0 |       210 |  0.00 |
++-----------------------------+------+-------+------------+-----------+-------+
+
+
+Warnings:
+WARNING: [VRFC 10-3091] actual bit length 16 differs from formal bit length 8 for port 'LED' [/home/dnybo/git/ECEN_620_Nybo/uart_transmitter/top_tb.sv:36]
+WARNING: [VRFC 10-3645] port 'LED16_B' remains unconnected for this instance [/home/dnybo/git/ECEN_620_Nybo/uart_transmitter/top_tb.sv:31]
+WARNING: [DRC CFGBVS-1] Missing CFGBVS and CONFIG_VOLTAGE Design Properties: Neither the CFGBVS nor CONFIG_VOLTAGE voltage property is set in the current_design.  Configuration bank voltage select (CFGBVS) must be set to VCCO or GND, and CONFIG_VOLTAGE must be set to the correct configuration voltage, in order to determine the I/O voltage support for the pins in bank 0. 
+
+Timing:
+
+WNS: 5.284ns
+
+
+
+
+
+
