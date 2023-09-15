@@ -7,6 +7,20 @@
 *.o
 *.so
 
+
+# Sim sources #
+# #############
+*.jou
+*.dir
+*.pb
+*.rpt
+*.sim
+*.wlf
+*.wdb
+*.wcfg
+*.wcfgbak
+.Xil
+
 # Packages #
 ############
 # it's better to unpack these files and commit the raw source
