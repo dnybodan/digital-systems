@@ -45,6 +45,7 @@ Resources:
 
 
 Warnings:
+
 WARNING: [VRFC 10-3091] actual bit length 16 differs from formal bit length 8 for port 'LED' [/home/dnybo/git/ECEN_620_Nybo/uart_transmitter/top_tb.sv:36]
 WARNING: [VRFC 10-3645] port 'LED16_B' remains unconnected for this instance [/home/dnybo/git/ECEN_620_Nybo/uart_transmitter/top_tb.sv:31]
 WARNING: [DRC CFGBVS-1] Missing CFGBVS and CONFIG_VOLTAGE Design Properties: Neither the CFGBVS nor CONFIG_VOLTAGE voltage property is set in the current_design.  Configuration bank voltage select (CFGBVS) must be set to VCCO or GND, and CONFIG_VOLTAGE must be set to the correct configuration voltage, in order to determine the I/O voltage support for the pins in bank 0. 
