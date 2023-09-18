@@ -4,5 +4,5 @@ This repository contains the laboratory submissions for [ECEN 620](https://githu
 
 ## Assignments
 
-* [UART Transmitter](./uart_transmitter/Readme.md)
+* [UART Transmitter](./uart_transmitter/)
 * [Next assignment]
