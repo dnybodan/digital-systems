@@ -49,18 +49,20 @@ module tx_top(
     // tie LEDs to Switches 
     assign LED = SW;
 
-    // Button synchronizaer
+    // Button synchronizer
     always_ff@(posedge CLK100MHZ)
     begin
        btnc_r <= BTNC;
        btnc_r2 <= btnc_r;
     end
-    
+    // serial out syncronizer
     always_ff@(posedge CLK100MHZ)
         UART_RXD_OUT <= syncOut;
     
+    // instance and connect the uart_tx module
     tx uart_tx(.clk(CLK100MHZ),.rst(reset),.send(debSend),.din(SW),.tx_out(syncOut),.busy(LED16_B));
     
+    // instance and connect the debounce fsm
     debounce debounce_fsm(.clk(CLK100MHZ),.reset(reset),.noisy(btnc_r2),.debounced(debSend));
     
 endmodule
