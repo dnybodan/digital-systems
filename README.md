@@ -5,3 +5,4 @@ This repository contains the laboratory submissions for [ECEN 620]([https://gith
 ## Assignments
 
 * [UART Transmitter](./uart_transmitter/)
+* [UART Receiver](./uart_receiver/)
