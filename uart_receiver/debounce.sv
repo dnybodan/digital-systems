@@ -12,8 +12,9 @@
 *
 ****************************************************************************/
 `default_nettype none
-`define DEFAULT_DEBOUNCE_TIME 50000
-module debounce #(parameter MOD_VALUE = `DEFAULT_DEBOUNCE_TIME)(
+`timescale 1ns / 1ps
+
+module debounce #(parameter MOD_VALUE = 50000)(
     output logic debounced,
     input wire logic clk, reset, noisyInput);
     

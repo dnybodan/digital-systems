@@ -15,11 +15,8 @@
 ****************************************************************************/
 `default_nettype none
 `timescale 1ns / 1ps
-`define DEFAULT_CLK_FREQUENCY 100_000_000
-`define DEFAULT_BAUD_RATE 19_200
-`define DEFAULT_PARITY 1
 
-module tx #(parameter CLK_FREQUENCY=`DEFAULT_CLK_FREQUENCY, parameter BAUD_RATE=`DEFAULT_BAUD_RATE, parameter PARITY=`DEFAULT_PARITY) (
+module tx #(parameter CLK_FREQ=100000000, parameter BAUD_RATE=19200, parameter PARITY_MODE=1) (
     input wire logic clk, rst, send,
     input wire logic[7:0] din,
     output logic busy, tx_out);
@@ -40,7 +37,7 @@ module tx #(parameter CLK_FREQUENCY=`DEFAULT_CLK_FREQUENCY, parameter BAUD_RATE=
     logic[12:0] baudTimer;
  
     // constants
-    localparam BAUD_TIMER_MAX = (CLK_FREQUENCY/BAUD_RATE);
+    localparam BAUD_TIMER_MAX = (CLK_FREQ/BAUD_RATE);
 
     localparam BIT_CTR_MAX = 3'd7;
 
@@ -54,7 +51,7 @@ module tx #(parameter CLK_FREQUENCY=`DEFAULT_CLK_FREQUENCY, parameter BAUD_RATE=
         else if(dataBit)
             tx_out <= din[bitNum];
         else if(parityBit)
-            if(!PARITY)
+            if(!PARITY_MODE)
                 tx_out <= ^din; //parity calculation for even parity
             else
                 tx_out <= ~^din; //parity calculation for odd parity

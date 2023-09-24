@@ -26,7 +26,8 @@ module tx_model (clk,rst,tx_out,din,start_tx, parity_mode);
     parameter NUM_DATA_BITS = 8;
     parameter SEVENTH_BIT = 7, SIXTH_BIT = 6, FIFTH_BIT = 5, FOURTH_BIT = 4, THIRD_BIT = 3, SECOND_BIT = 2, FIRST_BIT = 1, ZERO_BIT = 0;
     parameter PERIODS_BIT_WIDTH = 15;
-
+    
+    // set timeformat
     initial
         $timeformat(-9,2,"ns");
 

@@ -22,11 +22,11 @@ module rx(clk,rst,din,dout,busy,data_strobe,rx_error);
     output wire busy,data_strobe,rx_error;
     
     // parameter definitions
-    parameter CLK_FREQUENCY = 100000000;
+    parameter CLK_FREQ = 100000000;
     parameter BAUD_RATE = 19200;
     parameter PARITY_MODE = 1;
     parameter BIT_COUNTER_MAX = 7;
-    parameter BAUD_TIMER_MAX = (CLK_FREQUENCY/BAUD_RATE);
+    parameter BAUD_TIMER_MAX = (CLK_FREQ/BAUD_RATE);
     parameter IDLE = 3'b000, SRT = 3'b001, BITS = 3'b010, PAR = 3'b011, STP = 3'b100, ACK = 3'b101, INIT = 3'b110, ERR = 3'b111;
     parameter STARTBIT = 10, DATABIT = 9, PARITYBIT = 2, BAUD_BIT_WIDTH = 32, COUNTER_BIT_WIDTH = 4;
     // internal signal definitions
