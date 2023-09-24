@@ -4,33 +4,36 @@
 *
 * Author: Daniel Nybo
 * Class: ECEN 620
-* Date: September 13, 2023
+* Date: September 19, 2023
 *
 * Description: This module debounces a noisyInput input signal. It also provides
-*             a debounced output signal.
+*             a debounced output signal. The module is parameterized for debounce
+*             time. The default debounce time is 5ms.
 *
 ****************************************************************************/
 `default_nettype none
+`timescale 1ns / 1ps
 
 module debounce #(parameter MOD_VALUE = 50000)(
     output logic debounced,
     input wire logic clk, reset, noisyInput);
     
-    //logic bits for counting to 499999
+    // logic bits for counting to 499999
     logic[18:0] count;
-    //to know if timer is done or if to clear timer
+    // to know if timer is done or if to clear timer
     logic clrTimer, timerDone;
     
-    //declaration of states
+    // declaration of states
     typedef enum logic[1:0] {s0, s1, s2, s3, ERR='X} stateType;
     stateType ns, cs;
     
-    //decides when timerDone is true
+    // decides when timerDone is true
     assign timerDone = (count == MOD_VALUE -1);
     
-    //counter to calculate delay of 5ms    
+    // counter to calculate delay of 5ms    
     always_ff @(posedge clk)
     begin
+        // reset clause
         if (clrTimer || reset)
             count <= 0;
         else
@@ -38,10 +41,10 @@ module debounce #(parameter MOD_VALUE = 50000)(
     end
     
     
-    //always comb logic for calculating next state
+    // always comb logic for calculating next state
     always_comb 
     begin
-        //assigning default values for ns debounced clrTimer and timerDone
+        // assigning default values for ns debounced clrTimer and timerDone
         ns = ERR;
         debounced = 0;
         clrTimer = 0; 
@@ -99,4 +102,3 @@ module debounce #(parameter MOD_VALUE = 50000)(
     
     
 endmodule
-
