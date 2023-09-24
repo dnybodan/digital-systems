@@ -1,8 +1,9 @@
-sim_tx: tx.sv
-	xvlog -sv tx.sv tx_tb.sv rx_model.sv
-	xelab tx_tb -s tx_tb
-	xsim tx_tb --onfinish quit -runall
-sim_top: tx.sv debounce.sv tx_top.sv 
+sim_rx: rx.v
+	xvlog rx.v tx_model.v
+	xvlog -sv rx_tb.sv
+	xelab rx_tb -s rx_tb
+	xsim rx_tb --onfinish quit -runall
+sim_top: rx.v rx_top.sv 
 	xvlog -sv tx.sv debounce.sv tx_top.sv top_tb.sv rx_model.sv
 	xelab top_tb -s top_tb
 	xsim top_tb --onfinish quit -runall

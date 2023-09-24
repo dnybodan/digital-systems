@@ -12,14 +12,14 @@
 * The parameters for this module are the clock frequency, the baud rate,
 * and the parity type. The parity type is either odd or even parity.
 *
-*
 ****************************************************************************/
 `default_nettype none
 `timescale 1ns / 1ps
 `define DEFAULT_CLK_FREQUENCY 100_000_000
 `define DEFAULT_BAUD_RATE 19_200
 `define DEFAULT_PARITY 1
-module tx #(parameter CLK_FREQUENCY=DEFAULT_CLK_FREQUENCY, parameter BAUD_RATE=DEFAULT_BAUD_RATE, parameter PARITY=DEFAULT_PARITY) (
+
+module tx #(parameter CLK_FREQUENCY=`DEFAULT_CLK_FREQUENCY, parameter BAUD_RATE=`DEFAULT_BAUD_RATE, parameter PARITY=`DEFAULT_PARITY) (
     input wire logic clk, rst, send,
     input wire logic[7:0] din,
     output logic busy, tx_out);
