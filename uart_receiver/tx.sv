@@ -26,7 +26,7 @@ module tx #(parameter CLK_FREQ=100000000, parameter BAUD_RATE=19200, parameter P
     stateType ns, cs;
     
     // logic signals for data path section of transmitter
-    logic startBit, dataBit, parityBit, busyBit;
+    logic startBit, dataBit, parityBit, ackBit, busy_r;
 
     // bit counter signals
     logic[2:0] bitNum;
@@ -42,7 +42,16 @@ module tx #(parameter CLK_FREQ=100000000, parameter BAUD_RATE=19200, parameter P
     localparam BIT_CTR_MAX = 3'd7;
 
     // Busy report
-    assign busy = busyBit;
+    assign busy = busy_r;
+    // generate busy report
+    always_ff @(posedge clk)
+        if (rst)
+            busy_r <= 0;
+        else
+            if (startBit)
+                busy_r <= 1;
+            else if (ackBit)
+                busy_r <= 0;
     
     //transmiter datapath code
     always_ff @(posedge clk)
@@ -94,8 +103,7 @@ module tx #(parameter CLK_FREQ=100000000, parameter BAUD_RATE=19200, parameter P
         clrBit = 0;
         dataBit = 0;
         parityBit = 0;
-        busyBit = 0;
-        
+        ackBit = 0;
         // reset clause
         if (rst)
         begin
@@ -106,7 +114,7 @@ module tx #(parameter CLK_FREQ=100000000, parameter BAUD_RATE=19200, parameter P
             clrBit = 0;
             dataBit = 0;
             parityBit = 0;
-            busyBit = 0;
+            ackBit = 0;
         end
         else
             case (cs)
@@ -115,7 +123,6 @@ module tx #(parameter CLK_FREQ=100000000, parameter BAUD_RATE=19200, parameter P
                 // until the send signal is asserted
                 idle:
                 begin
-                    busyBit = 0;
                     clrTimer = 1;
                     if (send)
                         ns = start;
@@ -127,7 +134,6 @@ module tx #(parameter CLK_FREQ=100000000, parameter BAUD_RATE=19200, parameter P
                 // it also starts the baud rate timer
                 start:
                 begin
-                    busyBit = 1;
                     startBit = 1;
                     if (timerDone)
                     begin
@@ -174,7 +180,7 @@ module tx #(parameter CLK_FREQ=100000000, parameter BAUD_RATE=19200, parameter P
                 // and the next state is set to idle
                 ack:
                 begin
-                    busyBit = 0;
+                    ackBit = 1;
                     if(send)
                         ns = cs;
                     else
