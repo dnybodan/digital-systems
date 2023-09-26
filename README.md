@@ -6,3 +6,4 @@ This repository contains the laboratory submissions for [ECEN 620]([https://gith
 
 * [UART Transmitter](./uart_transmitter/)
 * [UART Receiver](./uart_receiver/)
+* [VHDL UART](./vhdl/)
