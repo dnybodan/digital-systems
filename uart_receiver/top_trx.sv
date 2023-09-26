@@ -39,7 +39,7 @@ module top_trx #(
     logic update_upper;
 
     assign reset = ~CPU_RESETN;
-    
+    logic [7:0] dout_receiver;
 
     // Instantiate Transmitter
     tx transmitter (
@@ -56,7 +56,7 @@ module top_trx #(
         .clk(CLK100MHZ),
         .rst(reset),
         .din(uart_txd_in_sync2),
-        .dout(led_upper),
+        .dout(dout_receiver),
         .busy(LED17_R),
         .data_strobe(update_upper),
         .rx_error(LED17_G)
@@ -103,18 +103,13 @@ module top_trx #(
     // Connect LEDs
     assign LED[7:0] = SW;
 
-    // wait for update_upper to go high to update the upper LEDs
-    // with the value on led_upper
+    // only connect the upper 8 bits of the LED if the receiver has new data
     always_ff@(posedge CLK100MHZ) begin
-        if(reset) begin
-            LED[15:8] <= 0;
-        end else begin
-            if(update_upper)
-                LED[15:8] <= led_upper;
-            else
-                LED[15:8] <= LED[15:8];
-        end
+        if (reset)
+            led_upper <= 0;
+        else if (update_upper)
+            led_upper <= dout_receiver;
     end
+    assign LED[15:8] = led_upper;
     
-
 endmodule
