@@ -4,9 +4,11 @@ sim_rx: rx.vhd
 	xvlog -sv rx_tb.sv
 	xelab rx_tb -s rx_tb
 	xsim rx_tb --onfinish quit -runall
-sim_top: rx.vhd debounce.sv tx.sv top_trx.sv
+sim_top: rx.vhd debounce.sv tx.sv top_trx.sv seven_segment.vhd
 	xvhdl rx.vhd
-	xvlog -sv tx.sv debounce.sv top_trx.sv trx_tb.sv
+	xvhdl top_trx.vhd
+	xvhdl seven_segment.vhd
+	xvlog -sv tx.sv debounce.sv trx_tb.sv
 	xelab trx_tb -s trx_tb -generic_top "BAUD_RATE=19200"
 	xsim trx_tb --onfinish quit -runall
 gen_bit:

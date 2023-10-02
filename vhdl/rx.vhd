@@ -7,7 +7,7 @@
 -- * Date: September 25, 2023
 -- *
 -- * Description: this is a parameterized UART receiver which can be used to 
--- *              receive data from a UART transmitter. It is implimented
+-- *              receive data from a UART transmitter. It is implemented
 -- *              strictly in VHDL. This module has parameters for the
 -- *              Clock frequency, the baud rate, and the parity bit. The 
 -- *              module recieves a single byte of data and a parity bit.
@@ -16,7 +16,6 @@
 
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
-use IEEE.STD_LOGIC_ARITH.ALL;
 use IEEE.NUMERIC_STD.ALL;
 
 entity rx is
@@ -46,12 +45,6 @@ architecture Behavioral of rx is
     constant ACK : std_logic_vector(2 downto 0) := "101";
     constant INIT : std_logic_vector(2 downto 0) := "110";
     constant ERR : std_logic_vector(2 downto 0) := "111";
-    -- constant STARTBIT : integer := 10;
-    -- constant DATABIT : integer := 9;
-    -- constant PARITYBIT : integer := 2;
-    constant BAUD_BIT_WIDTH : integer := 32;
-    constant COUNTER_BIT_WIDTH : integer := 4;
-    -- constanst for shift left 0-7 times for data bits
 
     signal dataBuffer : std_logic_vector(10 downto 0) := (others => '0');
     signal cs, ns : std_logic_vector(2 downto 0) := ERR;
@@ -139,7 +132,7 @@ begin
     end process;
 
     -- Error handling logic
-    process(clk)
+    process(clk, rst)
     begin
         if rst = '1' then
             rx_error <= '0';
@@ -149,7 +142,8 @@ begin
             end if;
             if stopBit = '1' then
                 -- calculate the parity error here since it will have been recieved
-                -- calculate the parity bit
+                -- calculate the parity bit of the bits 9-1 since these are the data bits
+                -- with the parity bit included hence the magic numbers
                 parityCalc <= dataBuffer(9) xor dataBuffer(8) xor dataBuffer(7) xor dataBuffer(6) xor dataBuffer(5) xor dataBuffer(4) xor dataBuffer(3) xor dataBuffer(2) xor dataBuffer(1);
             end if;
             if ackBit = '1' then
@@ -173,7 +167,7 @@ begin
     end process;
 
     -- Busy signal logic
-    process(clk)
+    process(clk,rst)
     begin
         if rst = '1' then
             busy <= '0';
@@ -187,10 +181,10 @@ begin
     end process;
     
   
-    process(cs, din, timerDone, halfTimerDone, bitDone, rst)
+    process(cs, din, timerDone, halfTimerDone, startBit, dataBit, bitDone, rst)
     begin
         -- Defaults
-        ns <= ERR;
+        ns <= INIT;
         startBit <= '0';
         dataBit <= '0';
         incBit <= '0';
