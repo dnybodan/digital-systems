@@ -44,6 +44,11 @@ My major challenges were just getting used to vhdl and how the syntax works. It 
 
 WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
 Not an important warning to the design of the digital system
+
 **Timing**:
 
 WNS: 3.938ns
+
+**Discussion**:
+
+I think that vhdl is a little more verbose and requires some uneccessary characters. I think that it could use an update potentially. That said its more explicit and avoids some of the confusion of verilog. I didn't love coding in VHDL but it wasn't all bad. 
