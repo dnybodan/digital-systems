@@ -29,7 +29,9 @@ module top_trx #(
     input wire logic UART_TXD_IN,
     output logic LED16_B,
     output logic LED17_R,
-    output logic LED17_G
+    output logic LED17_G,
+    output logic [6:0] segment,
+    output logic [7:0] AN
 );
 
     logic [7:0] led_upper;
@@ -38,9 +40,15 @@ module top_trx #(
     logic btn_prev;
     logic reset;
     logic update_upper;
+    logic [31:0] last_8_chars;
+
 
     assign reset = ~CPU_RESETN;
     logic [7:0] dout_receiver;
+    // this is the number of ms between updating each segment
+    // the number is reduced to 2 to make it so there isn't as
+    // much flickering
+    localparam SEGMENT_UPDATE_WINDOW_MS = 2;
 
     // Instantiate Transmitter
     tx transmitter (
@@ -71,6 +79,14 @@ module top_trx #(
         .debounced(btn_debounced)
     );
 
+    // Seven segment display
+    seven_segment seven_segment (
+        .clk(CLK100MHZ),
+        .data(last_8_chars),
+        .anode(AN),
+        .segment(segment)
+    );
+
     // Set all the baud rates, parity modes, and clock frequencies
     defparam transmitter.BAUD_RATE = BAUD_RATE;
     defparam transmitter.CLK_FREQ = CLK_FREQ;
@@ -79,6 +95,9 @@ module top_trx #(
     defparam receiver.BAUD_RATE = BAUD_RATE;
     defparam receiver.CLK_FREQ = CLK_FREQ;
     defparam receiver.PARITY_MODE = PARITY_MODE;
+
+    defparam seven_segment.CLK_FREQ = CLK_FREQ;
+    defparam seven_segment.MIN_DIGIT_DISPLAY_TIME_MS = SEGMENT_UPDATE_WINDOW_MS;
 
     // One-shot circuit for button
     always_ff@(posedge CLK100MHZ) begin
@@ -106,10 +125,14 @@ module top_trx #(
 
     // only connect the upper 8 bits of the LED if the receiver has new data
     always_ff@(posedge CLK100MHZ) begin
-        if (reset)
+        if (reset) begin
             led_upper <= 0;
-        else if (update_upper)
+            last_8_chars <= 0;
+        end
+        else if (update_upper) begin
             led_upper <= dout_receiver;
+            last_8_chars <= {last_8_chars[23:0], dout_receiver};
+        end
     end
     assign LED[15:8] = led_upper;
     
