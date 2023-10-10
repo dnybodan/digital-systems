@@ -55,6 +55,7 @@ module spi_controller (
     logic ff_SPI_CS, ff_SPI_SCLK, ff_SPI_MOSI, ff_busy, ff_done;
     logic [7:0] ff_data_received;
 
+    // state register
     always_ff @(posedge clk or posedge rst) begin
         if (rst) begin
             current_state <= IDLE;
@@ -63,6 +64,7 @@ module spi_controller (
         end
     end
 
+    // data path
     always_ff @(posedge clk or posedge rst) begin
         if (rst) begin
             receive_data <= 8'b0;
@@ -116,7 +118,7 @@ module spi_controller (
     end
 
 
-
+    // Assign outputs based on state
     always_comb begin
         incBit = 0;
         doneBit = 0;
@@ -129,22 +131,6 @@ module spi_controller (
             clrSTimer = 0;
             updateMOSI = 0;
         end else begin
-            // case (current_state)
-            //     IDLE: 
-            //         next_state = start ? START_TRANSFER : IDLE;
-            //     START_TRANSFER:
-            //         next_state = (sclk_counter == DELAY_100NS - 1) ? SCLK_HIGH : START_TRANSFER;
-            //     SCLK_HIGH_SETUP:
-            //         next_state = (sclk_counter == DELAY_20NS - 1) ? SCLK_HIGH : SCLK_HIGH_SETUP;
-            //     SCLK_HIGH:
-            //         next_state = (sclk_counter == HALF_SCLK_PERIOD - 1) ? SCLK_LOW_HOLD : SCLK_HIGH;
-            //     SCLK_LOW_HOLD:
-            //         next_state = (sclk_counter == DELAY_20NS - 1) ? SCLK_LOW : SCLK_LOW_HOLD;
-            //     SCLK_LOW:
-            //         next_state = (sclk_counter == HALF_SCLK_PERIOD - DELAY_20NS - DELAY_20NS - 1) ? SCLK_HIGH_SETUP : (bit_counter == 7 && !hold_cs) ? END_TRANSFER : SCLK_LOW;
-            //     END_TRANSFER:
-            //         next_state = IDLE;
-
 
             case(current_state)
                 IDLE: begin
