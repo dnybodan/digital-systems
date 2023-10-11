@@ -36,6 +36,7 @@ module spi_controller (
     localparam DELAY_20NS = CLK_FREQUECY / 50_000_000;
     localparam DELAY_30NS = CLK_FREQUECY /  33_333_333;
     localparam DELAY_40NS = CLK_FREQUECY / 25_000_000;
+    localparam DELAY_150NS = CLK_FREQUECY / 6_666_666;
 
     typedef enum {
         IDLE, 
@@ -50,7 +51,7 @@ module spi_controller (
     logic [7:0] receive_data;
     logic [31:0] sclk_counter;
     logic [2:0] bit_counter = 3'd7;  // Start with the MSB
-    logic incBit,doneBit,clrSTimer,updateMOSI;
+    logic incBit,doneBit,clrSTimer,updateMOSI,sampMISO;
 
     // Outputs driven by FFs
     logic ff_SPI_CS, ff_SPI_SCLK, ff_SPI_MOSI, ff_busy, ff_done;
@@ -68,7 +69,6 @@ module spi_controller (
     // data path
     always_ff @(posedge clk or posedge rst) begin
         if (rst) begin
-            receive_data <= 8'b0;
             ff_SPI_CS <= 1;
             ff_SPI_SCLK <= 0;
             ff_SPI_MOSI <= 0;
@@ -81,7 +81,7 @@ module spi_controller (
             ff_SPI_MOSI <= (updateMOSI) ? data_to_send[bit_counter] : ff_SPI_MOSI;
             ff_busy <= (next_state != IDLE);
             ff_done <= doneBit; 
-            if(next_state == SCLK_LOW) ff_data_received[bit_counter] <= SPI_MISO;
+            if(sampMISO) ff_data_received[bit_counter] <= SPI_MISO;
         end
     end
 
@@ -121,16 +121,19 @@ module spi_controller (
 
     // Assign outputs based on state
     always_comb begin
+        next_state = IDLE;
         incBit = 0;
         doneBit = 0;
         clrSTimer = 0;
         updateMOSI = 0;
+        sampMISO = 0;
         if (rst) begin
             next_state = IDLE;
             incBit = 0;
             doneBit = 0;
             clrSTimer = 0;
             updateMOSI = 0;
+            sampMISO = 0;
         end else begin
 
             case(current_state)
@@ -140,6 +143,9 @@ module spi_controller (
                         clrSTimer = 1;
                         next_state = START_TRANSFER;
                     end
+                    else begin
+                        next_state = IDLE;
+                    end
                 end
 
                 START_TRANSFER: begin
@@ -147,17 +153,24 @@ module spi_controller (
                         updateMOSI = 1;
                     end
                     // After setup delay, set up the SCLK high state
-                    if(sclk_counter == DELAY_100NS - 1) begin
+                    if(sclk_counter == DELAY_150NS - 1) begin
                         next_state = SCLK_HIGH;
                         clrSTimer = 1;
-                    end;
+                    end
+                    else begin
+                        next_state = START_TRANSFER;
+                    end
                 end
 
                 SCLK_HIGH: begin
                     // At the end of SCLK high period, hold the data for MOSI
                     if(sclk_counter == HALF_SCLK_PERIOD - 1) begin
                         next_state = SCLK_LOW;
+                        sampMISO =1;
+                        clrSTimer = 1;
                     end
+                    else
+                        next_state = SCLK_HIGH;
                 end
 
                 SCLK_LOW: begin
@@ -181,13 +194,14 @@ module spi_controller (
                             next_state = SCLK_HIGH;
                         end
                     end
+                    else begin
+                        next_state = SCLK_LOW;
+                    end
                 end
                 END_TRANSFER: begin
                     // After finishing transfer, return to idle state
                     next_state = IDLE;
                 end
-
-
             endcase
         end
     end

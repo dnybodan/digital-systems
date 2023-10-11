@@ -21,7 +21,8 @@ module oneshot(
 `default_nettype wire
 
     logic q0, q1;
-
+    // q0 feeds q1 meaning that q1 is one clock cycle behind q0 and, the 
+    // ouput is high for one clock cycle when trigger is pressed
     always @(posedge clk) begin
         if (rst) begin
             q0 <= 0;

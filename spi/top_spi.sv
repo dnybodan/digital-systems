@@ -76,7 +76,7 @@ module top_spi #(parameter CLK_FREQUECY=100_000_000, // System Clock
         .reset(~CPU_RESETN),
         .noisyInput(BTNL)
     );
-    // build a oneshot circuit for the left button
+    // oneshot circuit for the left button
     logic btnl_one_shot;
     oneshot btnl_oneshot (
         .clk(CLK100MHZ),
@@ -94,7 +94,7 @@ module top_spi #(parameter CLK_FREQUECY=100_000_000, // System Clock
         .noisyInput(BTNR)
     );
     
-    // build a oneshot circuit for the right button
+    // oneshot circuit for the right button
     logic btnr_one_shot;
     oneshot btnr_oneshot (
         .clk(CLK100MHZ),
@@ -142,6 +142,7 @@ module top_spi #(parameter CLK_FREQUECY=100_000_000, // System Clock
     // FSM
     always_comb begin
         hold_cs = 0;
+        next_state = IDLE;
         if(!CPU_RESETN) begin
             next_state = IDLE;
         end else begin

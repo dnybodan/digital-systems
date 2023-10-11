@@ -15,6 +15,12 @@ read_verilog -sv top_spi.sv
 read_verilog -sv debounce.sv oneshot.sv spi_controller.sv
 read_xdc top.xdc
 
+# change siverity of warnings
+set_msg_config -new_severity "INFO" -id "Constraints 18-5210"
+set_msg_config -new_severity "INFO" -id "DRC RTSTAT-10"
+set_msg_config -new_severity "INFO" -id "Synth 8-3331"
+set_msg_config -new_severity "INFO" -id "Synth 8-7080"
+
 # Perform synthesis
 synth_design -top top_spi -part xc7a100tcsg324-1
 
