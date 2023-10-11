@@ -1,4 +1,5 @@
 // simple simulation model for the adxl345 accelerometer spi interface
+`timescale 1ns/1ps
 
 module adxl362_model (sclk, mosi, miso, cs);
 

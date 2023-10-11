@@ -11,7 +11,7 @@
 *              module.
 *
 ****************************************************************************/
-`timescale 1ps/1ps
+`timescale 1ns/1ps
 `default_nettype none
 module spi_controller (
     input wire logic clk,
@@ -27,6 +27,7 @@ module spi_controller (
     output logic SPI_MOSI,
     output logic SPI_CS
 );
+`default_nettype wire
 
     parameter CLK_FREQUECY = 100_000_000;
     parameter SCLK_FRUQENCY = 500_000;
@@ -174,6 +175,7 @@ module spi_controller (
                         if(bit_counter == 7) begin
                             // If multi-byte, loop to setup state, otherwise end transfer
                             next_state = hold_cs ? SCLK_HIGH : END_TRANSFER;
+                            doneBit = 1;
                         end else begin
                             // Otherwise, continue with the next bit
                             next_state = SCLK_HIGH;
@@ -183,7 +185,6 @@ module spi_controller (
                 END_TRANSFER: begin
                     // After finishing transfer, return to idle state
                     next_state = IDLE;
-                    doneBit = 1;
                 end
 
 

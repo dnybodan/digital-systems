@@ -1,6 +1,6 @@
 // simulation model for a generic SPI subunit.
 // This model will print the value received and send a 8-bit counter value that increments each transaction.
-
+`timescale 1ns/1ps
 module spi_subunit (sclk, mosi, miso, cs);
 
     input wire logic sclk;
