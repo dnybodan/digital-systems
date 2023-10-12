@@ -4,8 +4,8 @@
 
 **Discussion**
 
-The main challenges I faced were with trying to create the spi controller without existing testbenches. I realize this is a part of the task and so it wasn't that bad considering. I also had a hard time connecting the top level state machine to the spi controller. This used a significant portion of my time. 
-
+The main challenges I faced were with trying to create the spi controller without existing testbenches. I realize this is a part of the task and so it wasn't that bad considering. I also had a hard time making sure the timing was correct when recieving a byte back from the adx module.
+  
 ## Assignment Specific Responses
 
 **Resources**:

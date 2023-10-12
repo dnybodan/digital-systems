@@ -63,15 +63,6 @@ module tb_top_spi #(
         .cs(SPI_CS)
     );
 
-    // create a miso buffer
-    logic [7:0] misoBuf = 0;
-    
-    // logic for miso buff
-    always @(negedge SPI_SCLK) begin
-        if(LED16_B)
-            misoBuf <= {misoBuf[6:0], SPI_MISO};
-    end
-
     // Test sequence
     initial begin
         // Initialize
@@ -102,10 +93,6 @@ module tb_top_spi #(
         #5ms; // assuming 5ms is enough time for debouncer
         // transaction should be long over after the 5ms delay
 
-        // Assertions for checking
-        // if(misoBuf == 8'h00) $display("Success: Correct DEVICEID, expected 0x00, got 0x%h", misoBuf);
-        // else $display("Error: Incorrect DEVICEID, expected 0x00, got 0x%h", misoBuf);
-        
         #10;
 
         // Read PARTID (0x02)
@@ -118,10 +105,6 @@ module tb_top_spi #(
         #5ms; // assuming 5ms is enough time for debouncer
         // transaction should be long over after the 5ms delay
 
-        // Assertions for checking
-        // if(misoBuf == 8'h02) $display("Success: Correct PARTID, expected 0x02, got 0x%h", misoBuf);
-        // else $display("Error: Incorrect PARTID, expected 0x02, got 0x%h", misoBuf);
-        // #10;
 
         // Read status register (0x0b)
         $display("Reading STATUS register (0x0b)");
@@ -133,10 +116,6 @@ module tb_top_spi #(
         #5ms; // assuming 5ms is enough time for debouncer
         // transaction should be long over after the 5ms delay
 
-        // Assertions for checking
-        // if(misoBuf == 8'h0b) $display("Success: Correct STATUS, expected 0x0b, got 0x%h", misoBuf);
-        // else $display("Error: Incorrect STATUS, expected 0x0b, got 0x%h", misoBuf);
-        #10;
         #10;
 
         // Write 0x52 to register 0x1F for soft reset

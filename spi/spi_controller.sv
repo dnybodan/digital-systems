@@ -28,16 +28,20 @@ module spi_controller (
     output logic SPI_CS
 );
 `default_nettype wire
-
+    // parameters
     parameter CLK_FREQUECY = 100_000_000;
     parameter SCLK_FRUQENCY = 500_000;
+
+    // local constants
     localparam HALF_SCLK_PERIOD = (CLK_FREQUECY / SCLK_FRUQENCY) / 2; // half the total sclock period
     localparam DELAY_100NS = CLK_FREQUECY / 10_000_000; 
     localparam DELAY_20NS = CLK_FREQUECY / 50_000_000;
     localparam DELAY_30NS = CLK_FREQUECY /  33_333_333;
     localparam DELAY_40NS = CLK_FREQUECY / 25_000_000;
     localparam DELAY_150NS = CLK_FREQUECY / 6_666_666;
+    localparam BIT_WIDTH = 7;
 
+    // states declared 
     typedef enum {
         IDLE, 
         START_TRANSFER,
@@ -45,13 +49,13 @@ module spi_controller (
         SCLK_LOW,
         END_TRANSFER
     } state_t;
-
     state_t current_state, next_state;
 
+    
     logic [7:0] receive_data;
     logic [31:0] sclk_counter;
     logic [2:0] bit_counter = 3'd7;  // Start with the MSB
-    logic incBit,doneBit,clrSTimer,updateMOSI,sampMISO;
+    logic incBit,doneBit,clrSTimer,updateMOSI,sampMISO,clrBit;
 
     // Outputs driven by FFs
     logic ff_SPI_CS, ff_SPI_SCLK, ff_SPI_MOSI, ff_busy, ff_done;
@@ -59,6 +63,7 @@ module spi_controller (
 
     // state register
     always_ff @(posedge clk or posedge rst) begin
+        // reset clause
         if (rst) begin
             current_state <= IDLE;
         end else begin
@@ -66,8 +71,9 @@ module spi_controller (
         end
     end
 
-    // data path
+    // output data path
     always_ff @(posedge clk or posedge rst) begin
+        // reset clause
         if (rst) begin
             ff_SPI_CS <= 1;
             ff_SPI_SCLK <= 0;
@@ -88,12 +94,13 @@ module spi_controller (
 
     // sclk_counter
     always_ff @(posedge clk or posedge rst) begin
+        // reset clause
         if (rst) begin
             sclk_counter <= 0;
         end else begin
             if (clrSTimer) begin
                 sclk_counter <= 0;
-            end else if (sclk_counter == HALF_SCLK_PERIOD - 1) begin
+            end else if (sclk_counter == HALF_SCLK_PERIOD) begin
                 sclk_counter <= 0;
             end else begin
                 sclk_counter <= sclk_counter + 1;
@@ -103,10 +110,11 @@ module spi_controller (
 
     // bit counter
     always_ff @(posedge clk or posedge rst) begin
+        // reset clause
         if (rst) begin
             bit_counter <= 3'd7; // Start with the MSB
         end else begin
-            if (next_state == START_TRANSFER)begin
+            if (clrBit)begin
                 bit_counter <= 3'd7; // Start with the MSB
             end else if (incBit) begin
                 if (bit_counter == 0) begin
@@ -124,36 +132,39 @@ module spi_controller (
         next_state = IDLE;
         incBit = 0;
         doneBit = 0;
+        clrBit = 0;
         clrSTimer = 0;
         updateMOSI = 0;
         sampMISO = 0;
+        // reset clause
         if (rst) begin
             next_state = IDLE;
             incBit = 0;
             doneBit = 0;
+            clrBit = 0;
             clrSTimer = 0;
             updateMOSI = 0;
             sampMISO = 0;
         end else begin
-
             case(current_state)
-                IDLE: begin
+                IDLE: begin // Idle state
                     // When a start signal is detected, begin transfer
                     if(start) begin
                         clrSTimer = 1;
                         next_state = START_TRANSFER;
+                        clrBit = 1;
                     end
                     else begin
                         next_state = IDLE;
                     end
                 end
 
-                START_TRANSFER: begin
-                    if(sclk_counter == DELAY_40NS - 1) begin
+                START_TRANSFER: begin // initiates the transfer, CS goes low
+                    if(sclk_counter == DELAY_40NS) begin
                         updateMOSI = 1;
                     end
                     // After setup delay, set up the SCLK high state
-                    if(sclk_counter == DELAY_150NS - 1) begin
+                    if(sclk_counter == DELAY_150NS) begin
                         next_state = SCLK_HIGH;
                         clrSTimer = 1;
                     end
@@ -162,33 +173,37 @@ module spi_controller (
                     end
                 end
 
-                SCLK_HIGH: begin
+                SCLK_HIGH: begin // SCLK high state, data is sampled on the falling edge
                     // At the end of SCLK high period, hold the data for MOSI
-                    if(sclk_counter == HALF_SCLK_PERIOD - 1) begin
+                    if(sclk_counter == HALF_SCLK_PERIOD) begin
                         next_state = SCLK_LOW;
-                        sampMISO =1;
+                        sampMISO = 1;
                         clrSTimer = 1;
                     end
                     else
                         next_state = SCLK_HIGH;
                 end
 
-                SCLK_LOW: begin
+                SCLK_LOW: begin // SCLK low state, data is updated 30NS into the low period
                     // force setup timing, implicit hold timing due to this being the 
                     // only update to bit increment
-                    if(sclk_counter == HALF_SCLK_PERIOD - DELAY_40NS - 1) begin
+                    if(sclk_counter == HALF_SCLK_PERIOD - DELAY_40NS) begin
                         incBit = 1;
                     end
                     // inc MOSI, again implicit hold timing
-                    if(sclk_counter == HALF_SCLK_PERIOD - DELAY_30NS - 1) begin
+                    if(sclk_counter == HALF_SCLK_PERIOD - DELAY_30NS) begin
                         updateMOSI = 1;
                     end
                     // If we're at the end of a byte, decide next action based on hold_cs
-                    if(sclk_counter == HALF_SCLK_PERIOD - 1) begin
+                    if(sclk_counter == HALF_SCLK_PERIOD) begin
                         if(bit_counter == 7) begin
                             // If multi-byte, loop to setup state, otherwise end transfer
-                            next_state = hold_cs ? SCLK_HIGH : END_TRANSFER;
                             doneBit = 1;
+                            if (hold_cs) begin
+                                next_state = SCLK_HIGH;
+                            end else begin
+                                next_state = END_TRANSFER;
+                            end
                         end else begin
                             // Otherwise, continue with the next bit
                             next_state = SCLK_HIGH;
@@ -198,7 +213,7 @@ module spi_controller (
                         next_state = SCLK_LOW;
                     end
                 end
-                END_TRANSFER: begin
+                END_TRANSFER: begin // End transfer state, CS goes high to end transfer
                     // After finishing transfer, return to idle state
                     next_state = IDLE;
                 end
