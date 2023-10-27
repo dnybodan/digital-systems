@@ -15,7 +15,7 @@
 `timescale 1ns/1ps
 `default_nettype none
 module i2c_top(
-    input wire logic CLK_100MHZ,
+    input wire logic CLK100MHZ,
     input wire logic CPU_RESETN,
     inout wire logic TMP_SDA,
     inout wire logic TMP_SCL,
@@ -32,10 +32,16 @@ module i2c_top(
 `default_nettype wire
 
     localparam HARD_CODED_ADT_ADDRESS = 7'b1001011; // hard coded address for the ADT7410 temperature sensor
+    localparam CLK_FREQ = 100_000_000; // 100 MHz
 
     logic rst, start, rd_wr;
     logic [6:0] bus_address;
     logic [7:0] data_received_reg;
+    logic btnr_one_shot;
+    logic debounced_BTNR;
+    logic btnl_one_shot;
+    logic debounced_BTNL;
+    logic [31:0] recBuffer;
 
     // invert the reset signal
     assign rst = ~CPU_RESETN;
@@ -50,8 +56,8 @@ module i2c_top(
     assign LED = SW;
 
     // instantiate the i2c_wrapper module
-    i2c_wrapper (CLK100MHZ) my_i2c_wrapper(
-        .clk(CLK_100MHZ),
+    i2c_wrapper #(CLK_FREQ) my_i2c_wrapper(
+        .clk(CLK100MHZ),
         .rst(rst),
         .SDA(TMP_SDA),
         .SCL(TMP_SCL),
@@ -67,7 +73,6 @@ module i2c_top(
     );
 
     // 7-segment display controller instantiation
-    logic [31:0] recBuffer;
     seven_segment display_controller (
         .clk(CLK100MHZ),
         .data(recBuffer),
@@ -76,37 +81,33 @@ module i2c_top(
     );
 
     // Debouncer for the left button (debounced_BTNL)
-    logic debounced_BTNL;
     debounce left_button_debouncer (
         .debounced(debounced_BTNL),
         .clk(CLK100MHZ),
-        .reset(~CPU_RESETN),
+        .reset(rst),
         .noisyInput(BTNL)
     );
 
     // oneshot circuit for the left button
-    logic btnl_one_shot;
     oneshot btnl_oneshot (
         .clk(CLK100MHZ),
-        .rst(~CPU_RESETN),
+        .rst(rst),
         .trigger(debounced_BTNL),
         .one_out(btnl_one_shot)
     );
 
     // Debouncer for the right button (debounced_BTNR)
-    logic debounced_BTNR;
     debounce right_button_debouncer (
         .debounced(debounced_BTNR),
         .clk(CLK100MHZ),
-        .reset(~CPU_RESETN),
+        .reset(rst),
         .noisyInput(BTNR)
     );
     
     // oneshot circuit for the right button
-    logic btnr_one_shot;
     oneshot btnr_oneshot (
         .clk(CLK100MHZ),
-        .rst(~CPU_RESETN),
+        .rst(rst),
         .trigger(debounced_BTNR),
         .one_out(btnr_one_shot)
     );

@@ -16,211 +16,126 @@ module tb_i2c_top();
 
     // Parameters
     parameter CLK_FREQ = 100_000_000;
-
-    localparam HARD_CODED_ADT_ADDRESS = 7'b1001011; // hard coded address for the ADT7410 temperature sensor
-
-    // Clock Generation
-    logic clk;
+    
+    // Free Clock Generation
+    logic CLK100MHZ;
     always
     begin
-        clk <=1; #5ns;
-        clk <=0; #5ns;
+        CLK100MHZ <=1; #5ns;
+        CLK100MHZ <=0; #5ns;
     end
 
     // Signals
-    logic rst;
+    logic CPU_RESETN;
     tri TMP_SDA, TMP_SCL;
-    logic start;
-    logic [7:0] address, data_to_send;
-    logic [7:0] data_received;
-    logic sense_busy,controller_busy, rd_wr, done, error;
-    logic [6:0] bus_address;
+    logic BTNL, BTNR;
+    logic [15:0] SW,LED;
+    logic sense_busy;
+    logic busy, done, error;
+    logic [6:0] segment;
+    logic [7:0] digit;
 
     // Logic to emulate the tri-state behavior
     pullup mypullupSCL(TMP_SCL);
     pullup mypullupSDA(TMP_SDA);
 
     // I2C Controller Instance
-    i2c_wrapper #(CLK_FREQ) u_i2c_wrapper (
-        .clk(clk),
-        .rst(rst),
-        .SDA(TMP_SDA),
-        .SCL(TMP_SCL),
-        .start(start),
-        .rd_wr(rd_wr),
-        .address(address),
-        .bus_address(bus_address),
-        .data_to_send(data_to_send),
-        .data_received(data_received),
-        .busy(controller_busy),
-        .done(done),
-        .error(error)
+    i2c_top my_i2c_top(
+        .CLK100MHZ(CLK100MHZ),
+        .CPU_RESETN(CPU_RESETN),
+        .TMP_SDA(TMP_SDA),
+        .TMP_SCL(TMP_SCL),
+        .BTNL(BTNL),
+        .BTNR(BTNR),
+        .SW(SW),
+        .segment(segment),
+        .AN(digit),
+        .LED(LED),
+        .LED16_B(busy),
+        .LED16_G(done),
+        .LED16_R(error)
     );
 
     // I2C Model Instance
     adt7420 u_adt7420 (
         .scl(TMP_SCL),
         .sda(TMP_SDA),
-        .rst(rst),
+        .rst(~CPU_RESETN),
         .busy(sense_busy)
     );
 
     // Stimulus
     initial begin
-        rst = 1;
-        #20ns
-        rst = 0;
+        #50ns; // wait a few clock cycles before doing anything
 
-        #1500ns; // give time for i2c controller to initialize(1400ns for bus free)
+        // Initialize signals
+        CPU_RESETN = 1;
+        SW = 0;
+        BTNL = 0;
+        BTNR = 0;
 
-        // Valid I2C transaction sequences
-        bus_address = HARD_CODED_ADT_ADDRESS; // hard coded address for the ADT7410 temperature sensor
-        
-        // write sequence, write a 1 to 0A
-        rd_wr = 0;
-        address = 8'h0A;
-        data_to_send = 8'h1;
-        #10ns;  
-        start = 1;
-        #100ns;
-        start = 0;
-        // Wait for transaction to complete
-        @(negedge controller_busy);
-        // print what was sent
-        $display("Data sent to adt7420: %h", data_to_send);
+        #20ns;
 
-        // write sequence, write a 0 to 0x04
-        rd_wr = 0;
-        address = 8'h04;
-        data_to_send = 8'h05;
-        #10ns;
-        start = 1;
-        #100ns;
-        start = 0;
-        // Wait for transaction to complete
-        @(negedge controller_busy);
-        // print what was sent
-        $display("Data sent to adt7420: %h", data_to_send);
+        // reset the controller
+        CPU_RESETN = 0;
+        // wait a few clock cycles
 
-        // write sequence, write a 0 to 0x05
-        rd_wr = 0;
-        address = 8'h05;
-        data_to_send = 8'h02;
-        #10ns;
-        start = 1;
-        #100ns;
-        start = 0;
-        // Wait for transaction to complete
-        @(negedge controller_busy);
-        // print what was sent
-        $display("Data sent to adt7420: %h", data_to_send);
+        #100ns
+        CPU_RESETN = 1;
+        // give time for i2c controller to initialize(1400ns for bus free)
+        #1500ns; 
 
-        // write sequence, write a 0 to 0x06
-        rd_wr = 0;
-        address = 8'h06;
-        data_to_send = 8'h04;
-        #10ns;
-        start = 1;
-        #100ns;
-        start = 0;
-        // Wait for transaction to complete
-        @(negedge controller_busy);
-        // print what was sent
-        $display("Data sent to adt7420: %h", data_to_send);
+        // read from ID address 0B
+        // set lower 8 switches to 0B
+        $display("\nReading from address 0x0B");
+        SW = 16'h000B;
+        // press the right button for a read
+        BTNR = 1;
+        // wait for debounce to finish
+        #5ms; // assuming 5ms is enough time for debouncer
+        // release the button for 5ms which will give transaction
+        // enough time to complete
+        BTNR = 0;
+        #5ms; 
 
-        // write sequence, write a 0 to 0x07
-        rd_wr = 0;
-        address = 8'h07;
-        data_to_send = 8'h06;
-        #10ns;
-        start = 1;
-        #100ns;
-        start = 0;
-        // Wait for transaction to complete
-        @(negedge controller_busy);
-        // print what was sent
-        $display("Data sent to adt7420: %h", data_to_send);
+        // read from STATUS address 02
+        // set lower 8 switches to 02
+        $display("\nReading from address 0x02");
+        SW = 16'h0002;
+        // press the right button for a read
+        BTNR = 1;
+        // wait for debounce to finish
+        #5ms; // assuming 5ms is enough time for debouncer
+        // release the button for 5ms which will give transaction
+        // enough time to complete
+        BTNR = 0;
+        #5ms; 
 
+        // read from TEMP register address 00
+        // set lower 8 switches to 00
+        $display("\nReading from address 0x00");
+        SW = 16'h0000;
+        // press the right button for a read
+        BTNR = 1;
+        // wait for debounce to finish
+        #5ms; // assuming 5ms is enough time for debouncer
+        // release the button for 5ms which will give transaction
+        // enough time to complete
+        BTNR = 0;
+        #5ms; 
 
-
-        // read sequence, read from 0B
-        rd_wr = 1;
-        address = 8'h0B;
-        data_to_send = 8'b00000000;
-        #10ns;
-        start = 1;
-        #100ns;
-        start = 0;
-        // Wait for transaction to complete
-        @(negedge controller_busy);
-        // check data received
-        $display("Data received from adt7420: %h", data_received);
-
-        // read sequence, read from 0A
-        rd_wr = 1;
-        address = 8'h0A;
-        data_to_send = 8'b00000000;
-        #10ns;
-        start = 1;
-        #100ns;
-        start = 0;
-        // Wait for transaction to complete
-        @(negedge controller_busy);
-        // check data received
-        $display("Data received from adt7420: %h", data_received);
-
-        // read sequence, read from 04
-        rd_wr = 1;
-        address = 8'h04;
-        data_to_send = 8'b00000000;
-        #10ns;
-        start = 1;
-        #100ns;
-        start = 0;
-        // Wait for transaction to complete
-        @(negedge controller_busy);
-        // check data received
-        $display("Data received from adt7420: %h", data_received);
-        
-        // read sequence, read from 05
-        rd_wr = 1;
-        address = 8'h05;
-        data_to_send = 8'b00000000;
-        #10ns;
-        start = 1;
-        #100ns;
-        start = 0;
-        // Wait for transaction to complete
-        @(negedge controller_busy);
-        // check data received
-        $display("Data received from adt7420: %h", data_received);
-
-
-        // write to wrong bus address
-        bus_address = 8'h00;
-        rd_wr = 0;
-        address = 8'h0A;
-        data_to_send = 8'h1;
-        #10ns;
-        start = 1;
-        #100ns;
-        start = 0;
-        // Wait for transaction to complete
-        @(negedge controller_busy);
-        $display("Should have stopped mid write due to no ack from sensor");
-
-        // read from wrong bus address
-        bus_address = 8'h00;
-        rd_wr = 1;
-        address = 8'h0A;
-        data_to_send = 8'b00000000;
-        #10ns;
-        start = 1;
-        #100ns;
-        start = 0;
-        // Wait for transaction to complete
-        @(negedge controller_busy);
-        $display("Should have stopped mid read due to no ack from sensor");
+        // read from STATUS address 01
+        // set lower 8 switches to 01
+        $display("\nReading from address 0x01");
+        SW = 16'h0001;
+        // press the right button for a read
+        BTNR = 1;
+        // wait for debounce to finish
+        #5ms; // assuming 5ms is enough time for debouncer
+        // release the button for 5ms which will give transaction
+        // enough time to complete
+        BTNR = 0;
+        #5ms; 
         
         // testbench complete
         $display("\nTestbench complete");

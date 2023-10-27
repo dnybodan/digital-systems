@@ -85,7 +85,7 @@ state_t cs,ns;
 logic [7:0] data_to_send_reg;
 logic [7:0] data_received_reg;
 logic [7:0] address_reg;
-logic sda_out, scl_out, busy_bit, done_bit, error_bit, continue_bit; // internal output flags
+logic sda_out, scl_out, done_bit, error_bit, continue_bit; // internal output flags
 logic [7:0] timer; // timer will run to max value and then wrap around if its not cleared
 logic clr_timer; // clear timer flag
 logic [3:0] bit_counter; // counter for indexing data to send and data to recieve
@@ -138,7 +138,7 @@ end
 
 // create state update register
 always_ff @(posedge clk, posedge rst) begin
-    if(rst) begin
+    if (rst) begin
         cs <= INIT;
     end else begin
         cs <= ns;
@@ -149,7 +149,6 @@ end
 always_comb begin
     // default values to cover all cases
     ns = INIT;
-    busy_bit = 0;
     done_bit = 0;
     error_bit = 0;
     clr_timer = 0;
@@ -159,7 +158,6 @@ always_comb begin
     // reset clause
     if (rst) begin
         ns = INIT;
-        busy_bit = 0;
         done_bit = 0;
         error_bit = 0;
         clr_timer = 1;

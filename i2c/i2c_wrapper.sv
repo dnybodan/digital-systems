@@ -14,7 +14,7 @@
 
 `timescale 1ns/1ps
 `default_nettype none
-module i2c_wrapper#(parameter CLK_FREQ = 100_000_000)(
+module i2c_wrapper #(parameter CLK_FREQ = 100_000_000)(
     input wire logic clk,
     input wire logic rst,
     inout wire logic SDA,
