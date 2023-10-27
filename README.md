@@ -8,3 +8,4 @@ This repository contains the laboratory submissions for [ECEN 620]([https://gith
 * [UART Receiver](./uart_receiver/)
 * [VHDL UART](./vhdl/)
 * [SPI Controller](./spi/)
+* [I2C](./i2c/)
