@@ -31,9 +31,8 @@ module i2c_wrapper #(parameter CLK_FREQ = 100_000_000)(
 );
 `default_nettype wire
 
-localparam MHZ_TO_NS = 1_000_000_000.0; // 1 ns / 1 MHz
-localparam real CYCLE_CONST = CLK_FREQ / MHZ_TO_NS; // clock cycles to complete each timing in 1ns increments(100MHz clock)
-localparam REPEAT_HOLD_TIME = 10000 * CYCLE_CONST; // 10000 ns
+// create repeat hold time
+localparam REPEAT_HOLD_TIME = int'(10000 * (CLK_FREQ / 1_000_000_000.0)); // 10000 ns
 
 logic repeat_start, rd_wr_wrapper, continu, clr_timer;
 logic[32:0] timer;

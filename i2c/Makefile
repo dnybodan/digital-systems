@@ -7,7 +7,9 @@ sim_top: tb_i2c_top.sv i2c_top.sv i2c_controller.sv i2c_wrapper.sv adt7420.sv se
 	xvlog -sv tb_i2c_top.sv i2c_top.sv i2c_controller.sv i2c_wrapper.sv adt7420.sv debounce.sv oneshot.sv
 	xelab tb_i2c_top -s tb_i2c_top
 	xsim tb_i2c_top --onfinish quit -runall
+implementation_fast:
+	vivado -mode batch -source i2c_implementation_fast_synth.tcl
 gen_bit:
-	vivado -mode batch -source spi_synth.tcl
+	vivado -mode batch -source i2c_synth.tcl
 clean: 
-	rm -rf .Xil *.bit *.rpt *.str *.jou *.pb *.log *.dir
+	rm -rf .Xil *.swp *.bit *.rpt *.str *.jou *.pb *.log *.dir

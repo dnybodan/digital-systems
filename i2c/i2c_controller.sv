@@ -32,21 +32,19 @@ module i2c_controller #(parameter CLK_FREQ=100_000_000) (
 );
 `default_nettype wire
 
-localparam MHZ_TO_NS = 1_000_000_000.0; // 1 ns / 1 MHz
-localparam real CYCLE_CONST = CLK_FREQ / MHZ_TO_NS; // clock cycles to complete each timing in 1ns increments(100MHz clock)
 
 // clock cycles to complete each timing in 10ns increments(100MHz clock)
-localparam TRISE = 300 * CYCLE_CONST;  // 300 ns
-localparam TFALL = 300 * CYCLE_CONST; // 300 ns
-localparam BUS_FREE_TIME = 1400 * CYCLE_CONST; // 1400 ns
-localparam START_HOLD_TIME = 900 * CYCLE_CONST; // 600 ns + tfall(300ns) = 900 ns
-localparam DATA_SETUP_TIME = 20 * CYCLE_CONST; // 20 ns
+localparam TRISE = int'(300 * (CLK_FREQ / 1_000_000_000.0));  // 300 ns
+localparam TFALL = int'(300 * (CLK_FREQ / 1_000_000_000.0)); // 300 ns
+localparam BUS_FREE_TIME = int'(1400 * (CLK_FREQ / 1_000_000_000.0)); // 1400 ns
+localparam START_HOLD_TIME = int'(900 * (CLK_FREQ / 1_000_000_000.0)); // 600 ns + tfall(300ns) = 900 ns
+localparam DATA_SETUP_TIME = int'(20 * (CLK_FREQ / 1_000_000_000.0)); // 20 ns
 localparam DATA_HOLD_TIME = 0; // 0 ns
-localparam SCL_LOW_TIME = 1300 * CYCLE_CONST; // 1300 ns
+localparam SCL_LOW_TIME = int'(1300 * (CLK_FREQ / 1_000_000_000.0)); // 1300 ns
 localparam SCL_LOW_AND_TFALL_BEFORE_SETUP_TIME = SCL_LOW_TIME + TFALL - DATA_SETUP_TIME; // 1.3 us + tfall(300ns) - tdatsetup(20ns) = 1.68 us
 localparam DATA_SETUP_AND_TRISE = DATA_SETUP_TIME + TRISE; // 20 ns + 300 ns = 320 ns
-localparam SCL_HIGH_TIME = 700 * CYCLE_CONST; // 700 ns 600 ns is minimum but add 100 ns for safety
-localparam STOP_SETUP_TIME = 600 * CYCLE_CONST; // 600 ns
+localparam SCL_HIGH_TIME = int'(700 * (CLK_FREQ / 1_000_000_000.0)); // 700 ns 600 ns is minimum but add 100 ns for safety
+localparam STOP_SETUP_TIME = int'(600 * (CLK_FREQ / 1_000_000_000.0)); // 600 ns
 localparam BITS_PER_BYTE = 8; // 8 bits per byte
 
 // States
@@ -77,8 +75,8 @@ typedef enum logic[7:0] {INIT, // initialize state
     DATA_WR_SCL_HIGH,          // SCL high, check for ACK after 8 bit transfer, also check for stop condition(if stop condition go to bus free)
     STOP_SCL_LOW,              // SCL low for stop condition
     STOP_SCL_HIGH_SETUP,       // SCL stop setup time + trise before sending stop bit
-    STOP_CONDITION,            // SCL high for stop condition and SDA goes high, then send to bus free
-    ERR='X} state_t;           // error state
+    STOP_CONDITION             // SCL high for stop condition and SDA goes high, then send to bus free
+    } state_t;          
 state_t cs,ns; 
 
 // Internal signals
@@ -492,9 +490,9 @@ always_comb begin
                 else 
                     ns = cs;
             end
-            ERR: begin
+            default: begin
                 ns = INIT;
-                clr_timer = 1;
+                done_bit = 1;
                 error_bit = 1;
             end
         endcase

@@ -14,7 +14,7 @@
 
 `timescale 1ns/1ps
 `default_nettype none
-module i2c_top(
+module i2c_top #(parameter CLK_FREQ=100_000_000)(
     input wire logic CLK100MHZ,
     input wire logic CPU_RESETN,
     inout wire logic TMP_SDA,
@@ -32,7 +32,6 @@ module i2c_top(
 `default_nettype wire
 
     localparam HARD_CODED_ADT_ADDRESS = 7'b1001011; // hard coded address for the ADT7410 temperature sensor
-    localparam CLK_FREQ = 100_000_000; // 100 MHz
 
     logic rst, start, rd_wr;
     logic [6:0] bus_address;

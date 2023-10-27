@@ -11,7 +11,7 @@
 *
 ****************************************************************************/
 `timescale 1ns/1ps
-module tb_i2c_controlle();
+module tb_i2c_controller();
 
     // Parameters
     parameter CLK_FREQ = 100_000_000;
@@ -76,6 +76,7 @@ module tb_i2c_controlle();
         bus_address = HARD_CODED_ADT_ADDRESS; // hard coded address for the ADT7410 temperature sensor
         
         // write sequence, write a 1 to 0A
+        $display("\nWrite sequence, write a 0x01 to 0A");
         rd_wr = 0;
         address = 8'h0A;
         data_to_send = 8'h1;
@@ -89,6 +90,7 @@ module tb_i2c_controlle();
         $display("Data sent to adt7420: %h", data_to_send);
 
         // write sequence, write a 0 to 0x04
+        $display("\nWrite sequence, write a 0x05 to 0x04");
         rd_wr = 0;
         address = 8'h04;
         data_to_send = 8'h05;
@@ -102,6 +104,7 @@ module tb_i2c_controlle();
         $display("Data sent to adt7420: %h", data_to_send);
 
         // write sequence, write a 0 to 0x05
+        $display("\nWrite sequence, write a 02 to 0x05");
         rd_wr = 0;
         address = 8'h05;
         data_to_send = 8'h02;
@@ -115,6 +118,7 @@ module tb_i2c_controlle();
         $display("Data sent to adt7420: %h", data_to_send);
 
         // write sequence, write a 0 to 0x06
+        $display("\nWrite sequence, write a 0x06 to 0x06");
         rd_wr = 0;
         address = 8'h06;
         data_to_send = 8'h04;
@@ -128,6 +132,7 @@ module tb_i2c_controlle();
         $display("Data sent to adt7420: %h", data_to_send);
 
         // write sequence, write a 0 to 0x07
+        $display("\nWrite sequence, write a 0x06 to 0x07");
         rd_wr = 0;
         address = 8'h07;
         data_to_send = 8'h06;
@@ -143,6 +148,7 @@ module tb_i2c_controlle();
 
 
         // read sequence, read from 0B
+        $display("\nRead sequence, read from 0B");
         rd_wr = 1;
         address = 8'h0B;
         data_to_send = 8'b00000000;
@@ -156,6 +162,7 @@ module tb_i2c_controlle();
         $display("Data received from adt7420: %h", data_received);
 
         // read sequence, read from 0A
+        $display("\nRead sequence, read from 0A");
         rd_wr = 1;
         address = 8'h0A;
         data_to_send = 8'b00000000;
@@ -169,6 +176,7 @@ module tb_i2c_controlle();
         $display("Data received from adt7420: %h", data_received);
 
         // read sequence, read from 04
+        $display("\nRead sequence, read from 04");
         rd_wr = 1;
         address = 8'h04;
         data_to_send = 8'b00000000;
@@ -182,6 +190,7 @@ module tb_i2c_controlle();
         $display("Data received from adt7420: %h", data_received);
         
         // read sequence, read from 05
+        $display("\nRead sequence, read from 05");
         rd_wr = 1;
         address = 8'h05;
         data_to_send = 8'b00000000;
@@ -196,6 +205,7 @@ module tb_i2c_controlle();
 
 
         // write to wrong bus address
+        $display("\nWrite to wrong bus address");
         bus_address = 8'h00;
         rd_wr = 0;
         address = 8'h0A;
@@ -209,6 +219,7 @@ module tb_i2c_controlle();
         $display("Should have stopped mid write due to no ack from sensor");
 
         // read from wrong bus address
+        $display("\nRead from wrong bus address");
         bus_address = 8'h00;
         rd_wr = 1;
         address = 8'h0A;
