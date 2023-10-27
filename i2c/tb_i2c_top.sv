@@ -1,17 +1,18 @@
 /***************************************************************************
 *
-* Module: tb_i2c_controller
+* Module: tb_i2c_top
 *
 * Author: Daniel Nybo
 * Class: ECEN 620
 * Date: October 25, 2023
 *
-* Description: This is a testbench for conntecting i2c controller with adt7420
-*              model.
+* Description: This is a testbench for the top module of the I2C controller
+*              It is used to test the I2C controller and the ADT7420
+*              temperature sensor.
 *
 ****************************************************************************/
 `timescale 1ns/1ps
-module tb_i2c_controlle();
+module tb_i2c_top();
 
     // Parameters
     parameter CLK_FREQ = 100_000_000;

@@ -57,13 +57,13 @@ typedef enum logic[7:0] {INIT, // initialize state
     ADDRESS_SCL_LOW_HOLD,      // SCL low hold + time for tfall sda time for address bit
     ADDRESS_SETUP,             // change the address bit to next bit for setup plus trise time
     ADDRESS_SCL_HIGH,          // SCL high for address bits, go to ack bit after 8 bits
-    ADDRESS_ACK_SCL_LOW,           // SCL low hold + time for tfall sda time for ACK bit
-    ADDRESS_ACK_SCL_HIGH,          // SCL high, check for ACK at the end of 8 bit transfer
-    REG_ADDRESS_SCL_LOW_HOLD,      // SCL low hold + time for tfall sda time for address bit
-    REG_ADDRESS_SETUP,             // change the address bit to next bit for setup plus trise time
-    REG_ADDRESS_SCL_HIGH,          // SCL high for address bits, go to ack bit after 8 bits
-    REG_ADDRESS_ACK_SCL_LOW,       // SCL low hold + time for tfall sda time for ACK bit
-    REG_ADDRESS_ACK_SCL_HIGH,      // SCL high, check for ACK at the end of 8 bit transfer
+    ADDRESS_ACK_SCL_LOW,       // SCL low hold + time for tfall sda time for ACK bit
+    ADDRESS_ACK_SCL_HIGH,      // SCL high, check for ACK at the end of 8 bit transfer
+    REG_ADDRESS_SCL_LOW_HOLD,  // SCL low hold + time for tfall sda time for address bit
+    REG_ADDRESS_SETUP,         // change the address bit to next bit for setup plus trise time
+    REG_ADDRESS_SCL_HIGH,      // SCL high for address bits, go to ack bit after 8 bits
+    REG_ADDRESS_ACK_SCL_LOW,   // SCL low hold + time for tfall sda time for ACK bit
+    REG_ADDRESS_ACK_SCL_HIGH,  // SCL high, check for ACK at the end of 8 bit transfer
     RECIEVE_ACK_SCL_LOW,       // SCL low hold + time for tfall sda time for ACK bit
     RECIEVE_ACK_SCL_HIGH,      // SCL high, check for ACK at the end of 8 bit transfer
     DRIVE_ACK_SCL_LOW_HOLD,    // SCL low hold + time for tfall sda time for ACK bit

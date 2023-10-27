@@ -4,7 +4,7 @@
 
 **Discussion**
 
-The I2C has many timing requirements which made it really difficult to make sure timing constraints were met. I also spend a considerable amount of time figuring out how to properly impliment the start conditions and what not in the top module. This was probably the most challenging lab thus far.
+The I2C has many timing requirements which made it really difficult to make sure timing constraints were met. I also spend a considerable amount of time figuring out how to properly impliment the different byte sequences/repeated starts for read and write opperations.
 
 ## Assignment Specific Responses
 
