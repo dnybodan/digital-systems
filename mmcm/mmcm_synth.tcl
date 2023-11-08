@@ -11,7 +11,6 @@
 
 # Load files
 read_verilog -sv mmcm.sv
-read_verilog -sv debounce.sv oneshot.sv
 read_vhdl seven_segment.vhd
 read_xdc top.xdc
 
@@ -22,7 +21,7 @@ set_msg_config -new_severity "INFO" -id "Synth 8-3331"
 set_msg_config -new_severity "INFO" -id "Synth 8-7080"
 
 # Perform synthesis
-synth_design -top mmcm.sv -part xc7a100tcsg324-1
+synth_design -top mmcm -part xc7a100tcsg324-1
 
 # Perform Implementation
 opt_design

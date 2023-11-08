@@ -11,6 +11,27 @@ create_clock -add -name sys_clk_pin -period 10.00 -waveform {0 5} [get_ports {CL
 set_property CFGBVS VCCO [current_design]
 set_property CONFIG_VOLTAGE 3.3 [current_design]
 
+
+## timing constraints
+# Note that Vivado adds the "_reg" name to your HDL name
+# Sets a false path from the pulse3_reg signal to the synchronizer signal in another clock
+# domain.
+set_false_path -from [ get_cells PULSE3_reg ] -to [ get_cells PULSE3CNT_d_reg ]
+# sets a false path from pulse 4 reg to signal in another clock domain
+set_false_path -from [ get_cells PULSE4_reg ] -to [ get_cells PULSE4CNT_d_reg ]
+set_false_path -from [ get_cells CNT4_reg[*] ] -to [ get_cells PULSE4_reg ]
+set_false_path -from [ get_cells PULSE4_reg ] -to [ get_cells en_q_reg ]
+set_false_path -from [ get_cells en_q_reg ] -to [ get_cells PULSE4CNT_d_reg ]
+# path from the clock toggle signal to metastability detection circuit
+set_false_path -from [ get_cells clk0_1_toggle_reg ] -to [ get_cells qa_reg ]
+set_false_path -from [ get_cells qd_reg ] -to [ get_cells CNT_META_reg[*] ]
+
+set_false_path -from [get_clocks CLKOUT4] -to [get_clocks sys_clk_pin]
+set_false_path -from [get_clocks CLKOUT5] -to [get_clocks sys_clk_pin]
+set_false_path -from [get_clocks CLKOUT6] -to [get_clocks sys_clk_pin]
+set_false_path -from [get_clocks sys_clk_pin]  -to [get_clocks CLKOUT4]
+set_false_path -from [get_clocks sys_clk_pin]  -to [get_clocks CLKOUT5]
+set_false_path -from [get_clocks sys_clk_pin]  -to [get_clocks CLKOUT6]
 ##Switches
 
 set_property -dict { PACKAGE_PIN J15   IOSTANDARD LVCMOS33 } [get_ports { SW[0] }]; #IO_L24N_T3_RS0_15 Sch=sw[0]

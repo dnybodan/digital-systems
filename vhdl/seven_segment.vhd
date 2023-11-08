@@ -56,7 +56,7 @@ architecture Behavioral of seven_segment is
             when "1101" => return "1000000"; -- D
             when "1110" => return "0000110"; -- E
             when "1111" => return "0001110"; -- F
-            when others => return "0000000"; -- Default case
+            when others => return "1000000"; -- Default case
         end case;
     end function;
 

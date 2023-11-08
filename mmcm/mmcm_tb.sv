@@ -16,10 +16,10 @@ module mmcm_tb();
     // INPUT signals
     logic CLK100MHZ;
     logic RESET; // active low
-    logic [16:0] SWITCHES;
+    logic [15:0] SWITCHES;
     // ouputs
-    logic [6:0] LED;
-    logic [6:0] AN;
+    logic [15:0] LED;
+    logic [7:0] AN;
     logic [6:0] segment;
 
     // create free running clock 5ns up 5ns down
@@ -53,29 +53,39 @@ module mmcm_tb();
         #100ns
         // set reset to 1
         RESET = 1;
-        // let run for 100 ns
-        #100
+        // let run for 500 ns for locked and reset signals to propogate 
+        #500
         $display("toggle switches to verify display updates properly");
         // set swtiches different values and verify data switches to proper counters
         SWITCHES = 16'h0001;
         #100
         SWITCHES = 16'h0002;
-        #100
+        #1000
         SWITCHES = 16'h0003;
-        #100
+        #1000
         SWITCHES = 16'h0004;
-        #100
+        #1000
         SWITCHES = 16'h0005;
-        #100
+        #1000
         SWITCHES = 16'h0006;
-        #100
+        #1000
         SWITCHES = 16'h0007;
-        #100
+        #1000
         SWITCHES = 16'h0008;
-        #100
+        #1000
         SWITCHES = 16'h0009;
-        #100
+        #1000
         SWITCHES = 16'h000A;
+
+
+        // test reset
+        $display("Verify reset works properly");
+        // set reset to 0
+        RESET = 0;
+        // let run for 100 ns
+        #500
+        // set reset to 1
+        RESET = 1;
 
         $display("Verify waveform is as expected for 100us");
         // now just let the system run for a while to verify waveform is as expected
