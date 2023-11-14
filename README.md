@@ -10,3 +10,4 @@ This repository contains the laboratory submissions for [ECEN 620]([https://gith
 * [SPI Controller](./spi/)
 * [I2C](./i2c/)
 * [MMCM](./mmcm/)
+* [BRAM](./bram/)
