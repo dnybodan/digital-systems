@@ -1,6 +1,6 @@
 # Daniel Nybo 
 
-**microblaze** - *Approx 3 Hours Spent*
+**microblaze** - *Approx 10 Hours Spent*
 
 **Summary of Major Challenges**
 
