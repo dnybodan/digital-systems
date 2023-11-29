@@ -11,4 +11,4 @@ This repository contains the laboratory submissions for [ECEN 620]([https://gith
 * [I2C](./i2c/)
 * [MMCM](./mmcm/)
 * [BRAM](./bram/)
-* [MICROBLAZE](./microblaze/)
+* [Microblaze](./ublaze/)
