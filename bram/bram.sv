@@ -31,7 +31,7 @@ module bram(input wire logic CLK100MHZ,
     logic rst, rst_d;         // reset
     logic[31:0] segment_data; // data for the seven segment display
     logic[7:0] output_buffer; // output buffer for UART TX
-    logic[15:0] DOADO;         // read output data
+    logic[15:0] DOADO;        // read output data
     logic[1:0] DOPADOP;       // read output parity (only one bit used in this case)
     logic[13:0] ADDRARDADDR;  // read address
     logic ENARDEN;            // enable read
