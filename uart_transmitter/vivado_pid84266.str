@@ -1,0 +1,708 @@
+/*
+
+AMD Vivado v2023.1 (64-bit) [Major: 2023, Minor: 1]
+SW Build: 3865809 on Sun May  7 15:04:56 MDT 2023
+IP Build: 3864474 on Sun May  7 20:36:21 MDT 2023
+IP Build: 3864474 on Sun May  7 20:36:21 MDT 2023
+
+Process ID (PID): 84266
+License: Customer
+Mode: GUI Mode
+
+Current time: 	Fri Dec 15 17:33:26 MST 2023
+Time zone: 	Mountain Standard Time (America/Denver)
+
+OS: Red Hat Enterprise Linux Server release 7.9 (Maipo)
+OS Version: 3.10.0-1160.15.2.el7.x86_64
+OS Architecture: amd64
+Available processors (cores): 32
+
+Display: 77
+Screen size: 1920x1200
+Screen resolution (DPI): 100
+Available screens: 1
+Default font: family=Dialog,name=Dialog,style=plain,size=12
+Scale size: 12
+OS font scaling: 100%
+
+Java version: 	17.0.3 64-bit
+JavaFX version: 17.0.1
+Java home: 	/opt/Xilinx/Vivado/2023.1/tps/lnx64/jre17.0.3_7
+Java executable: 	/opt/Xilinx/Vivado/2023.1/tps/lnx64/jre17.0.3_7/bin/java
+Java arguments: 	[-Dsun.java2d.pmoffscreen=false, -Dhttps.protocols=TLSv1,TLSv1.1,TLSv1.2, -Dsun.java2d.xrender=false, -Djdk.gtk.version=2, -Dsun.java2d.uiScale.enabled=false, -Dswing.aatext=true, -XX:-UsePerfData, -Djdk.map.althashing.threshold=512, -XX:StringTableSize=4072, -XX:+UseStringDeduplication, -XX:MaxGCPauseMillis=200, -XX:+ParallelRefProcEnabled, --add-opens=java.desktop/javax.swing.plaf.synth=ALL-UNNAMED, --add-opens=java.base/java.nio=ALL-UNNAMED, --add-opens=java.desktop/sun.swing=ALL-UNNAMED, --add-opens=java.desktop/javax.swing=ALL-UNNAMED, --add-opens=java.desktop/javax.swing.tree=ALL-UNNAMED, --add-opens=java.desktop/javax.swing.plaf.basic=ALL-UNNAMED, --add-opens=java.desktop/javax.swing.plaf.synth=ALL-UNNAMED, --add-opens=java.desktop/javax.swing.plaf.basic=ALL-UNNAMED, --add-opens=java.desktop/javax.swing=ALL-UNNAMED, --add-opens=java.desktop/javax.swing.tree=ALL-UNNAMED, --add-opens=java.desktop/java.awt.event=ALL-UNNAMED, --add-exports=java.desktop/javax.swing.plaf.synth=ALL-UNNAMED, --add-exports=java.base/java.nio=ALL-UNNAMED, --add-exports=java.desktop/sun.swing=ALL-UNNAMED, --add-exports=java.desktop/javax.swing=ALL-UNNAMED, --add-exports=java.desktop/javax.swing.tree=ALL-UNNAMED, --add-exports=java.desktop/javax.swing.plaf.basic=ALL-UNNAMED, --add-exports=java.desktop/sun.swing=ALL-UNNAMED, --add-exports=java.desktop/sun.swing.table=ALL-UNNAMED, --add-exports=java.desktop/sun.swing.plaf.synth=ALL-UNNAMED, --add-exports=java.desktop/sun.awt.shell=ALL-UNNAMED, --add-exports=java.base/sun.security.action=ALL-UNNAMED, --add-exports=java.desktop/sun.font=ALL-UNNAMED, --add-opens=java.desktop/sun.awt.X11=ALL-UNNAMED, -XX:NewSize=80m, -XX:MaxNewSize=80m, -Xms512m, -Xmx4072m, -Xss10m, -Xrs]
+Java initial memory (-Xms): 	512 MB
+Java maximum memory (-Xmx):	 3 GB
+
+User name: 	dnybo
+User home directory: /home/dnybo
+User working directory: /home/dnybo/git/ECEN_620_Nybo/uart_transmitter
+User country: 	US
+User language: 	en
+User locale: 	en_US
+
+RDI_BASEROOT: /opt/Xilinx/Vivado
+HDI_APPROOT: /opt/Xilinx/Vivado/2023.1
+RDI_DATADIR: /opt/Xilinx/Vivado/2023.1/data
+RDI_BINDIR: /opt/Xilinx/Vivado/2023.1/bin
+
+Vivado preferences file: /home/dnybo/.Xilinx/Vivado/2023.1/vivado.xml
+Vivado preferences directory: /home/dnybo/.Xilinx/Vivado/2023.1/
+Vivado layouts directory: /home/dnybo/.Xilinx/Vivado/2023.1/data/layouts
+PlanAhead jar file: 	/opt/Xilinx/Vivado/2023.1/lib/classes/planAhead.jar
+Vivado log file: 	/home/dnybo/git/ECEN_620_Nybo/uart_transmitter/vivado.log
+Vivado journal file: 	/home/dnybo/git/ECEN_620_Nybo/uart_transmitter/vivado.jou
+Engine tmp dir: 	./.Xil/Vivado-84266-chewpaca
+Non-Default Parameters:	[]
+
+Xilinx & AMD Environment Variables
+--------------------------------------------------------------------------------------------
+GNOME_SHELL_SESSION_MODE: classic
+RDI_APPROOT: /opt/Xilinx/Vivado/2023.1
+RDI_BASEROOT: /opt/Xilinx/Vivado
+RDI_BINROOT: /opt/Xilinx/Vivado/2023.1/bin
+RDI_BUILD: yes
+RDI_DATADIR: /opt/Xilinx/Vivado/2023.1/data
+RDI_INSTALLROOT: /opt/Xilinx
+RDI_INSTALLVER: 2023.1
+RDI_JAVA_PLATFORM: 
+RDI_JAVA_VERSION: 17.0.3_7
+RDI_LIBDIR: /opt/Xilinx/Vivado/2023.1/lib/lnx64.o/Rhel:/opt/Xilinx/Vivado/2023.1/lib/lnx64.o
+RDI_OPT_EXT: .o
+RDI_PATCHROOT: 
+RDI_PLATFORM: lnx64
+RDI_PREPEND_PATH: /opt/Xilinx/Vitis/2023.1/bin:/opt/Xilinx/Vivado/2023.1/ids_lite/ISE/bin/lin64
+RDI_PROG: /opt/Xilinx/Vivado/2023.1/bin/unwrapped/lnx64.o/vivado
+RDI_SESSION_INFO: /home/dnybo/git/ECEN_620_Nybo/uart_transmitter:chewpaca_1702686789_84164
+RDI_SHARED_DATA: /opt/Xilinx/SharedData/2023.1/data
+RDI_TPS_ROOT: /opt/Xilinx/Vivado/2023.1/tps/lnx64
+RDI_USE_JDK17: True
+SHELL: /bin/bash
+XILINX: /opt/Xilinx/Vivado/2023.1/ids_lite/ISE
+XILINXD_LICENSE_FILE: 2100@ece-xilinx.byu.edu
+XILINX_DSP: /opt/Xilinx/Vivado/2023.1/ids_lite/ISE
+XILINX_HLS: /opt/Xilinx/Vitis_HLS/2023.1
+XILINX_PLANAHEAD: /opt/Xilinx/Vivado/2023.1
+XILINX_SDK: /opt/Xilinx/Vitis/2023.1
+XILINX_VITIS: /opt/Xilinx/Vitis/2023.1
+XILINX_VIVADO: /opt/Xilinx/Vivado/2023.1
+XILINX_VIVADO_HLS: /opt/Xilinx/Vivado/2023.1
+
+
+GUI allocated memory:	512 MB
+GUI max memory:		4,072 MB
+Engine allocated memory: 6,314 MB
+
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+
+*/
+
+// TclEventType: START_GUI
+// Tcl Message: start_gui 
+// HMemoryUtils.trashcanNow. Engine heap size: 6,360 MB. GUI used memory: 66 MB. Current time: 12/15/23, 5:33:27 PM MST
+// HMemoryUtils.trashcanNow. Engine heap size: 6,419 MB. GUI used memory: 66 MB. Current time: 12/15/23, 5:33:47 PM MST
+selectButton(PAResourceEtoH.GettingStartedView_OPEN_PROJECT, "Open Project"); // u
+// Run Command: PAResourceCommand.PACommandNames_OPEN_PROJECT
+selectComboBox(RDIResource.HJFileChooserRecentListPreview_RECENT_DIRECTORIES, "/home/dnybo/vivado_proj", 3); // aa.b
+setFileChooser("/home/dnybo/vivado_proj/microblaze.xpr");
+// [GUI Memory]: 122 MB (+125729kb) [00:00:49]
+// [Engine Memory]: 6,493 MB (+6656555kb) [00:00:49]
+// Opening Vivado Project: /home/dnybo/vivado_proj/microblaze.xpr. Version: Vivado v2023.1 
+// TclEventType: DEBUG_PROBE_SET_CHANGE
+// TclEventType: FLOW_ADDED
+// TclEventType: MSGMGR_MOVEMSG
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: FILESET_TARGET_UCF_CHANGE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: FILE_SET_NEW
+// TclEventType: RUN_COMPLETED
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: FILESET_TARGET_UCF_CHANGE
+// TclEventType: RUN_COMPLETED
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_COMPLETED
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_COMPLETED
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_COMPLETED
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_COMPLETED
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_COMPLETED
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_COMPLETED
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_COMPLETED
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_COMPLETED
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_COMPLETED
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_COMPLETED
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_COMPLETED
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: FILESET_TARGET_UCF_CHANGE
+// TclEventType: RUN_CURRENT
+// TclEventType: PROJECT_DASHBOARD_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: PROJECT_NEW
+// [Engine Memory]: 6,839 MB (+22518kb) [00:00:55]
+// WARNING: HEventQueue.dispatchEvent() is taking  3197 ms.
+// Tcl Message: open_project /home/dnybo/vivado_proj/microblaze.xpr 
+// Tcl Message: Scanning sources... Finished scanning sources 
+// Tcl Message: INFO: [IP_Flow 19-234] Refreshing IP repositories INFO: [IP_Flow 19-1704] No user IP repositories specified INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/opt/Xilinx/Vivado/2023.1/data/ip'. 
+// [GUI Memory]: 137 MB (+8860kb) [00:00:56]
+// [GUI Memory]: 145 MB (+1132kb) [00:00:56]
+// Tcl Message: open_project: Time (s): cpu = 00:00:17 ; elapsed = 00:00:07 . Memory (MB): peak = 8245.770 ; gain = 339.098 ; free physical = 23324 ; free virtual = 53867 
+// HMemoryUtils.trashcanNow. Engine heap size: 6,939 MB. GUI used memory: 83 MB. Current time: 12/15/23, 5:34:13 PM MST
+// Project name: microblaze; location: /home/dnybo/vivado_proj; part: xc7a100tcsg324-1
+dismissDialog("Open Project"); // bq
+// [GUI Memory]: 154 MB (+1822kb) [00:01:03]
+// Tcl Message: update_compile_order -fileset sources_1 
+// Elapsed time: 231 seconds
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, IP Integrator, Open Block Design]", 7, false); // f
+// Run Command: PAResourceCommand.PACommandNames_OPEN_BLOCK_DESIGN
+// TclEventType: LOAD_FEATURE
+// TclEventType: RSB_SCRIPT_TASK
+// Tcl Message: open_bd_design {/home/dnybo/vivado_proj/microblaze.srcs/sources_1/bd/microblaze_bd_1/microblaze_bd_1.bd} 
+// Tcl Message: Reading block design file </home/dnybo/vivado_proj/microblaze.srcs/sources_1/bd/microblaze_bd_1/microblaze_bd_1.bd>... 
+// TclEventType: RSB_CHANGE_CURRENT_DIAGRAM
+// TclEventType: LOAD_FEATURE
+// TclEventType: RSB_PROPERTY_CHANGE
+// TclEventType: RSB_LOCK_CHANGE
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_OPEN_DIAGRAM
+// WARNING: HEventQueue.dispatchEvent() is taking  3203 ms.
+// 'bE' command handler elapsed time: 4 seconds
+dismissDialog("Open Block Design"); // bq
+// HMemoryUtils.trashcanNow. Engine heap size: 6,968 MB. GUI used memory: 94 MB. Current time: 12/15/23, 5:38:12 PM MST
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "Address Editor", 1); // o
+// Elapsed time: 144 seconds
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "System", 0); // o
+// Run Command: PAResourceCommand.PACommandNames_CUSTOMIZE_RSB_BLOC
+// [GUI Memory]: 167 MB (+5446kb) [00:08:08]
+// Elapsed time: 223 seconds
+dismissDialog("Re-customize IP"); // m
+selectTab((HResource) null, (HResource) null, "Sources", 0); // aa
+expandTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Constraints]", 2); // E
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Constraints, constrs_1]", 3, true); // E - Node
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Constraints, constrs_1]", 3, true, false, false, false, false, true); // E - Double Click - Node
+expandTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Constraints, constrs_1]", 3); // E
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Constraints, constrs_1, top.xdc]", 4, false); // E
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Constraints, constrs_1, top.xdc]", 4, false, false, false, false, false, true); // E - Double Click
+// HMemoryUtils.trashcanNow. Engine heap size: 6,982 MB. GUI used memory: 92 MB. Current time: 12/15/23, 5:44:32 PM MST
+// Elapsed time: 34 seconds
+selectCodeEditor("top.xdc", 281, 324); // ad
+selectCodeEditor("top.xdc", 275, 307); // ad
+selectButton(RDIResourceCommand.RDICommands_SAVE_FILE, (String) null); // B
+// TclEventType: FILE_SET_CHANGE
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "System", 0); // o
+selectMenu(PAResourceItoN.MainMenuMgr_TOOLS, "Tools"); // ag
+selectMenu(RDIResourceCommand.RDICommands_CUSTOM_COMMANDS, "Custom Commands"); // al
+dismissMenu(PAResourceItoN.MainMenuMgr_TOOLS, "Tools"); // ag
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Simulation]", 9, true); // f - Node
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Simulation]", 9, true); // f - Node
+selectMenu(PAResourceItoN.MainMenuMgr_FILE, "File"); // ag
+selectMenu(PAResourceItoN.MainMenuMgr_PROJECT, "Project"); // al
+selectMenu(PAResourceItoN.MainMenuMgr_CHECKPOINT, "Checkpoint"); // al
+selectMenu(PAResourceItoN.MainMenuMgr_IP, "IP"); // al
+// Elapsed time: 24 seconds
+dismissMenu(PAResourceItoN.MainMenuMgr_FILE, "File"); // ag
+selectTab((HResource) null, (HResource) null, "Sources", 0); // aa
+expandTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, microblaze_bd_1_wrapper (microblaze_bd_1_wrapper.v)]", 1); // E
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, microblaze_bd_1_wrapper (microblaze_bd_1_wrapper.v), microblaze_bd_1_i : microblaze_bd_1 (microblaze_bd_1.bd), microblaze_bd_1 (microblaze_bd_1.v)]", 3, true, false, false, false, true, false); // E - Popup Trigger - Node
+selectMenu(PAResourceCommand.PACommandNames_OPEN_FILE_WITH, "Open With"); // al
+selectMenu(PAResourceCommand.PACommandNames_AUTO_UPDATE_HIER, "Hierarchy Update"); // al
+selectMenu(PAResourceQtoS.SrcMenu_IP_HIERARCHY, "IP Hierarchy"); // al
+selectMenu(PAResourceQtoS.SrcMenu_IP_HIERARCHY, "IP Hierarchy"); // al
+selectMenu(PAResourceCommand.PACommandNames_AUTO_UPDATE_HIER, "Hierarchy Update"); // al
+selectMenu(PAResourceCommand.PACommandNames_OPEN_FILE_WITH, "Open With"); // al
+selectMenu(PAResourceCommand.PACommandNames_OPEN_FILE_WITH, "Open With"); // al
+selectMenu(PAResourceCommand.PACommandNames_AUTO_UPDATE_HIER, "Hierarchy Update"); // al
+selectMenu(PAResourceQtoS.SrcMenu_IP_HIERARCHY, "IP Hierarchy"); // al
+selectMenu(PAResourceQtoS.SrcMenu_IP_HIERARCHY, "IP Hierarchy"); // al
+selectMenu(PAResourceCommand.PACommandNames_AUTO_UPDATE_HIER, "Hierarchy Update"); // al
+selectMenu(PAResourceCommand.PACommandNames_OPEN_FILE_WITH, "Open With"); // al
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, microblaze_bd_1_wrapper (microblaze_bd_1_wrapper.v)]", 1, true, false, false, false, true, false); // E - Popup Trigger - Node
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, microblaze_bd_1_wrapper (microblaze_bd_1_wrapper.v), microblaze_bd_1_i : microblaze_bd_1 (microblaze_bd_1.bd)]", 2, true); // E - Node
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, microblaze_bd_1_wrapper (microblaze_bd_1_wrapper.v), microblaze_bd_1_i : microblaze_bd_1 (microblaze_bd_1.bd)]", 2, true, false, false, false, true, false); // E - Popup Trigger - Node
+selectMenu(PAResourceCommand.PACommandNames_OPEN_FILE_WITH, "Open With"); // al
+selectMenu(PAResourceCommand.PACommandNames_AUTO_UPDATE_HIER, "Hierarchy Update"); // al
+selectMenu(PAResourceQtoS.SrcMenu_IP_HIERARCHY, "IP Hierarchy"); // al
+selectMenu(PAResourceQtoS.SrcMenu_IP_HIERARCHY, "IP Hierarchy"); // al
+selectMenu(PAResourceCommand.PACommandNames_AUTO_UPDATE_HIER, "Hierarchy Update"); // al
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, microblaze_bd_1_wrapper (microblaze_bd_1_wrapper.v), microblaze_bd_1_i : microblaze_bd_1 (microblaze_bd_1.bd)]", 2, true, false, false, false, true, false); // E - Popup Trigger - Node
+selectMenu(PAResourceCommand.PACommandNames_OPEN_FILE_WITH, "Open With"); // al
+selectMenuItem(PAResourceCommand.PACommandNames_GENERATE_COMPOSITE_FILE, "Generate Output Products..."); // ao
+// Run Command: PAResourceCommand.PACommandNames_GENERATE_COMPOSITE_FILE
+// Elapsed time: 14 seconds
+selectButton(PAResourceQtoS.SimpleOutputProductDialog_GENERATE_OUTPUT_PRODUCTS_IMMEDIATELY, "Generate"); // a
+// Tcl Message: generate_target all [get_files  /home/dnybo/vivado_proj/microblaze.srcs/sources_1/bd/microblaze_bd_1/microblaze_bd_1.bd] 
+// Tcl Message: INFO: [BD 41-1637] Generated targets are already up-to-date for block design 'microblaze_bd_1' - hence not re-generating. 
+// Tcl Message: export_ip_user_files -of_objects [get_files /home/dnybo/vivado_proj/microblaze.srcs/sources_1/bd/microblaze_bd_1/microblaze_bd_1.bd] -no_script -sync -force -quiet 
+// Tcl Message: create_ip_run [get_files -of_objects [get_fileset sources_1] /home/dnybo/vivado_proj/microblaze.srcs/sources_1/bd/microblaze_bd_1/microblaze_bd_1.bd] 
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: PROJECT_CHANGE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// 'bv' command handler elapsed time: 18 seconds
+dismissDialog("Managing Output Products"); // bq
+selectMenu(PAResourceItoN.MainMenuMgr_FILE, "File"); // ag
+selectMenu(PAResourceItoN.MainMenuMgr_PROJECT, "Project"); // al
+selectMenu(PAResourceItoN.MainMenuMgr_IP, "IP"); // al
+selectMenu(PAResourceItoN.MainMenuMgr_CHECKPOINT, "Checkpoint"); // al
+selectMenu(PAResourceItoN.MainMenuMgr_PROJECT, "Project"); // al
+selectMenu(PAResourceItoN.MainMenuMgr_OPEN_RECENT_PROJECT, "Open Recent"); // al
+selectMenuItem(PAResourceCommand.PACommandNames_WRITE_PROJECT_TCL, "Write Tcl..."); // ao
+dismissMenu(PAResourceItoN.MainMenuMgr_FILE, "File"); // ag
+// Run Command: PAResourceCommand.PACommandNames_WRITE_PROJECT_TCL
+selectCheckBox(PAResourceTtoZ.WriteProjectTclDialog_RECREATE_BLOCK_DESIGNS_USING_TCL, "Recreate Block Designs using Tcl", true); // f: TRUE
+selectButton(PAResourceTtoZ.WriteProjectTclDialog_PROJECT_TCL_FILE, (String) null); // r
+// Elapsed time: 11 seconds
+selectComboBox(RDIResource.HJFileChooserRecentListPreview_RECENT_DIRECTORIES, "/home/dnybo/git/ECEN_620_Nybo/uart_transmitter", 1); // aa.b
+// Tcl (Dont Echo) Command: 'rdi::info_commands {device::*}'
+// Tcl (Dont Echo) Command: 'rdi::info_commands {debug::*}'
+// Tcl (Dont Echo) Command: 'rdi::info_commands {*}'
+// Elapsed time: 48 seconds
+setFileChooser("/home/dnybo/git/ECEN_620_Nybo/microblaze/microblaze_bd_1.tcl");
+selectButton("OptionPane.button", "OK"); // JButton
+// HMemoryUtils.trashcanNow. Engine heap size: 7,002 MB. GUI used memory: 94 MB. Current time: 12/15/23, 5:47:42 PM MST
+selectButton(RDIResource.BaseDialog_OK, "OK"); // a
+// Tcl Command: 'write_project_tcl -force {/home/dnybo/git/ECEN_620_Nybo/microblaze/microblaze_bd_1.tcl}'
+// 'q' command handler elapsed time: 68 seconds
+selectButton("OptionPane.button", "Yes"); // JButton
+dismissDialog("Write Project to Tcl"); // au
+// TclEventType: PROJECT_CHANGE
+// TclEventType: DG_GRAPH_STALE
+// Tcl Message: write_project_tcl -force {/home/dnybo/git/ECEN_620_Nybo/microblaze/microblaze_bd_1.tcl} 
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: PROJECT_CHANGE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: PROJECT_CHANGE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: PROJECT_CHANGE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: PROJECT_CHANGE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: PROJECT_CHANGE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_LAYOUT_STATE
+// Tcl Message: INFO: [BD 5-453] Writing out BD creation steps for microblaze_bd_1 as a TCL proc 
+// Tcl Message:  
+// Tcl Message:  
+dismissDialog("Write Project to Tcl"); // bq
+// Elapsed time: 23 seconds
+selectButton("OptionPane.button", "No"); // JButton
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, microblaze_bd_1_wrapper (microblaze_bd_1_wrapper.v)]", 1, true); // E - Node
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, microblaze_bd_1_wrapper (microblaze_bd_1_wrapper.v)]", 1, true, false, false, false, true, false); // E - Popup Trigger - Node
+selectMenu(PAResourceCommand.PACommandNames_OPEN_FILE_WITH, "Open With"); // al
+selectMenuItem(RDIResourceCommand.RDICommands_DELETE, "Remove File from Project..."); // ao
+// Run Command: RDIResourceCommand.RDICommands_DELETE
+selectButton(RDIResource.BaseDialog_OK, "OK"); // a
+dismissDialog("Remove Sources"); // V
+// Tcl Message: export_ip_user_files -of_objects  [get_files /home/dnybo/vivado_proj/microblaze.gen/sources_1/bd/microblaze_bd_1/hdl/microblaze_bd_1_wrapper.v] -no_script -reset -force -quiet 
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// Tcl Message: remove_files  /home/dnybo/vivado_proj/microblaze.gen/sources_1/bd/microblaze_bd_1/hdl/microblaze_bd_1_wrapper.v 
+// Elapsed Time for: 'L.f': 14m:04s
+// HMemoryUtils.trashcanNow. Engine heap size: 7,056 MB. GUI used memory: 139 MB. Current time: 12/15/23, 5:48:17 PM MST
+// Elapsed Time for: 'L.f': 14m:06s
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: DG_GRAPH_STALE
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, microblaze_bd_1 (microblaze_bd_1.bd)]", 1, true, false, false, false, true, false); // E - Popup Trigger - Node
+selectMenu(PAResourceCommand.PACommandNames_OPEN_FILE_WITH, "Open With"); // al
+selectMenuItem(PAResourceCommand.PACommandNames_CREATE_TOP_HDL, "Create HDL Wrapper..."); // ao
+// Run Command: PAResourceCommand.PACommandNames_CREATE_TOP_HDL
+// Elapsed Time for: 'L.f': 14m:10s
+selectButton(RDIResource.BaseDialog_OK, "OK"); // a
+dismissDialog("Create HDL Wrapper"); // a
+// Elapsed Time for: 'L.f': 14m:12s
+// Elapsed time: 12 seconds
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, microblaze_bd_1 (microblaze_bd_1.bd)]", 1, true, false, false, false, true, false); // E - Popup Trigger - Node
+selectMenu(PAResourceCommand.PACommandNames_OPEN_FILE_WITH, "Open With"); // al
+selectMenuItem(PAResourceCommand.PACommandNames_CREATE_TOP_HDL, "Create HDL Wrapper..."); // ao
+// Run Command: PAResourceCommand.PACommandNames_CREATE_TOP_HDL
+selectButton(RDIResource.BaseDialog_OK, "OK"); // a
+dismissDialog("Create HDL Wrapper"); // a
+// Tcl Message: make_wrapper -files [get_files /home/dnybo/vivado_proj/microblaze.srcs/sources_1/bd/microblaze_bd_1/microblaze_bd_1.bd] -top 
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// Tcl Message: add_files -norecurse /home/dnybo/vivado_proj/microblaze.gen/sources_1/bd/microblaze_bd_1/hdl/microblaze_bd_1_wrapper.v 
+// Elapsed Time for: 'L.f': 14m:28s
+// HMemoryUtils.trashcanNow. Engine heap size: 7,073 MB. GUI used memory: 94 MB. Current time: 12/15/23, 5:48:42 PM MST
+// Elapsed Time for: 'L.f': 14m:32s
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: DG_GRAPH_STALE
+// Elapsed Time for: 'L.f': 14m:34s
+// Elapsed Time for: 'L.f': 14m:36s
+selectMenu(PAResourceItoN.MainMenuMgr_FILE, "File"); // ag
+selectMenu(PAResourceItoN.MainMenuMgr_PROJECT, "Project"); // al
+selectMenu(PAResourceItoN.MainMenuMgr_IP, "IP"); // al
+selectMenu(PAResourceItoN.MainMenuMgr_TEXT_EDITOR, "Text Editor"); // al
+selectMenu(PAResourceItoN.MainMenuMgr_EXPORT, "Export"); // al
+selectMenu(PAResourceItoN.MainMenuMgr_EXPORT, "Export"); // al
+selectMenu(PAResourceItoN.MainMenuMgr_TEXT_EDITOR, "Text Editor"); // al
+selectMenu(PAResourceItoN.MainMenuMgr_IP, "IP"); // al
+selectMenu(PAResourceItoN.MainMenuMgr_CHECKPOINT, "Checkpoint"); // al
+selectMenu(PAResourceItoN.MainMenuMgr_IP, "IP"); // al
+selectMenu(PAResourceItoN.MainMenuMgr_CHECKPOINT, "Checkpoint"); // al
+selectMenu(PAResourceItoN.MainMenuMgr_PROJECT, "Project"); // al
+selectMenu(PAResourceItoN.MainMenuMgr_OPEN_RECENT_PROJECT, "Open Recent"); // al
+selectMenuItem(PAResourceCommand.PACommandNames_WRITE_PROJECT_TCL, "Write Tcl..."); // ao
+dismissMenu(PAResourceItoN.MainMenuMgr_FILE, "File"); // ag
+// Run Command: PAResourceCommand.PACommandNames_WRITE_PROJECT_TCL
+selectButton(RDIResource.BaseDialog_OK, "OK"); // a
+selectButton("OptionPane.button", "OK"); // JButton
+// Tcl Command: 'write_project_tcl -force {/home/dnybo/git/ECEN_620_Nybo/microblaze/microblaze_bd_1.tcl}'
+// 'q' command handler elapsed time: 4 seconds
+selectButton("OptionPane.button", "Yes"); // JButton
+dismissDialog("Write Project to Tcl"); // au
+// TclEventType: PROJECT_CHANGE
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: PROJECT_CHANGE
+// TclEventType: FILE_SET_CHANGE
+// Tcl Message: write_project_tcl -force {/home/dnybo/git/ECEN_620_Nybo/microblaze/microblaze_bd_1.tcl} 
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: PROJECT_CHANGE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: PROJECT_CHANGE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: PROJECT_CHANGE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: PROJECT_CHANGE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_LAYOUT_STATE
+// Tcl Message: INFO: [BD 5-453] Writing out BD creation steps for microblaze_bd_1 as a TCL proc 
+// Tcl Message:  
+// Tcl Message:  
+dismissDialog("Write Project to Tcl"); // bq
+selectButton("OptionPane.button", "Yes"); // JButton
+// Elapsed Time for: 'L.f': 14m:52s
+closeView(PAResourceOtoP.PAViews_CODE, "Code"); // F
+selectMenu(PAResourceItoN.MainMenuMgr_FILE, "File"); // ag
+selectMenu(PAResourceItoN.MainMenuMgr_PROJECT, "Project"); // al
+selectMenu(PAResourceItoN.MainMenuMgr_PROJECT, "Project"); // al
+// HMemoryUtils.trashcanNow. Engine heap size: 7,095 MB. GUI used memory: 95 MB. Current time: 12/15/23, 5:49:07 PM MST
+// Elapsed Time for: 'L.f': 14m:56s
+selectMenu(PAResourceItoN.MainMenuMgr_PROJECT, "Project"); // al
+selectMenuItem(PAResourceCommand.PACommandNames_WRITE_PROJECT_TCL, "Write Tcl..."); // ao
+dismissMenu(PAResourceItoN.MainMenuMgr_FILE, "File"); // ag
+// Run Command: PAResourceCommand.PACommandNames_WRITE_PROJECT_TCL
+selectButton(RDIResource.BaseDialog_OK, "OK"); // a
+selectButton("OptionPane.button", "OK"); // JButton
+// Tcl Command: 'write_project_tcl -force {/home/dnybo/git/ECEN_620_Nybo/microblaze/microblaze_bd_1.tcl}'
+// 'q' command handler elapsed time: 4 seconds
+selectButton("OptionPane.button", "Yes"); // JButton
+dismissDialog("Write Project to Tcl"); // au
+// TclEventType: PROJECT_CHANGE
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// Tcl Message: write_project_tcl -force {/home/dnybo/git/ECEN_620_Nybo/microblaze/microblaze_bd_1.tcl} 
+// TclEventType: PROJECT_CHANGE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: PROJECT_CHANGE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: PROJECT_CHANGE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: PROJECT_CHANGE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: PROJECT_CHANGE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_LAYOUT_STATE
+// Tcl Message: INFO: [BD 5-453] Writing out BD creation steps for microblaze_bd_1 as a TCL proc 
+// Tcl Message:  
+// Tcl Message:  
+dismissDialog("Write Project to Tcl"); // bq
+selectButton("OptionPane.button", "No"); // JButton
+// Elapsed Time for: 'L.f': 15m:08s
+// Elapsed Time for: 'L.f': 15m:12s
+// Elapsed time: 15 seconds
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Program and Debug, Generate Bitstream]", 21, false); // f
+// Run Command: PAResourceCommand.PACommandNames_RUN_BITGEN
+selectButton(RDIResource.BaseDialog_YES, "Yes"); // a
+dismissDialog("Synthesis is Out-of-date"); // u
+// TclEventType: RUN_MODIFY
+// TclEventType: RUN_RESET
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_RESET
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_RESET
+// TclEventType: RUN_MODIFY
+// Tcl Message: reset_run synth_1 
+// Tcl Message: INFO: [Project 1-1161] Replacing file /home/dnybo/vivado_proj/microblaze.srcs/utils_1/imports/synth_1/microblaze_bd_1_wrapper.dcp with file /home/dnybo/vivado_proj/microblaze.runs/synth_1/microblaze_bd_1_wrapper.dcp 
+// TclEventType: FILE_SET_CHANGE
+selectButton(RDIResource.BaseDialog_OK, "OK"); // a
+dismissDialog("Launch Runs"); // cw
+// TclEventType: FILESET_TARGET_UCF_CHANGE
+// TclEventType: RUN_LAUNCH
+// TclEventType: FILESET_TARGET_UCF_CHANGE
+// TclEventType: RUN_LAUNCH
+// TclEventType: RUN_MODIFY
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_MODIFY
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_MODIFY
+// Tcl Message: launch_runs impl_1 -to_step write_bitstream -jobs 24 
+// Tcl Message: [Fri Dec 15 17:49:37 2023] Launched synth_1... Run output will be captured here: /home/dnybo/vivado_proj/microblaze.runs/synth_1/runme.log [Fri Dec 15 17:49:37 2023] Launched impl_1... Run output will be captured here: /home/dnybo/vivado_proj/microblaze.runs/impl_1/runme.log 
+dismissDialog("Generate Bitstream"); // bq
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_COMPLETED
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_STEP_COMPLETED
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_STEP_COMPLETED
+// Elapsed time: 219 seconds
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "Address Editor", 1); // o
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "System", 0); // o
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "Address Editor", 1); // o
+// TclEventType: RUN_COMPLETED
+// TclEventType: RUN_STATUS_CHANGE
+selectButton(RDIResource.BaseDialog_OK, "OK"); // a
+// Run Command: PAResourceCommand.PACommandNames_GOTO_IMPLEMENTED_DESIGN
+// Tcl Message: open_run impl_1 
+// HMemoryUtils.trashcanNow. Engine heap size: 7,259 MB. GUI used memory: 98 MB. Current time: 12/15/23, 5:53:27 PM MST
+// HMemoryUtils.trashcanNow. Engine heap size: 7,693 MB. GUI used memory: 97 MB. Current time: 12/15/23, 5:53:42 PM MST
+// [Engine Memory]: 7,693 MB (+536744kb) [00:20:26]
+// TclEventType: SDC_CONSTRAINT_ADD
+// TclEventType: POWER_CNS_STALE
+// TclEventType: SDC_CONSTRAINT_ADD
+// TclEventType: POWER_REPORT_STALE
+// TclEventType: SDC_CONSTRAINT_ADD
+// TclEventType: POWER_REPORT_STALE
+// TclEventType: SDC_CONSTRAINT_ADD
+// TclEventType: POWER_REPORT_STALE
+// TclEventType: SDC_CONSTRAINT_ADD
+// TclEventType: FLOORPLAN_MODIFY
+// TclEventType: DESIGN_NEW
+// HMemoryUtils.trashcanNow. Engine heap size: 8,074 MB. GUI used memory: 97 MB. Current time: 12/15/23, 5:53:45 PM MST
+// [Engine Memory]: 8,082 MB (+4595kb) [00:20:30]
+// DeviceModel: Load Xgds SwingWorker Join Forever elapsed time: 0.5s
+// TclEventType: DESIGN_NEW
+// TclEventType: HFED_INIT_ROUTE_STORAGE_COMPLETED
+// [GUI Memory]: 180 MB (+5371kb) [00:20:33]
+// DeviceView Instantiated
+// [GUI Memory]: 192 MB (+3079kb) [00:20:33]
+// WARNING: HEventQueue.dispatchEvent() is taking  3212 ms.
+// TclEventType: CURR_DESIGN_SET
+// Tcl Message: INFO: [Device 21-403] Loading part xc7a100tcsg324-1 
+// Tcl Message: Netlist sorting complete. Time (s): cpu = 00:00:00.11 ; elapsed = 00:00:00.11 . Memory (MB): peak = 8812.824 ; gain = 0.000 ; free physical = 22519 ; free virtual = 53200 
+// Tcl Message: INFO: [Netlist 29-17] Analyzing 275 Unisim elements for replacement INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds INFO: [Project 1-479] Netlist was created with Vivado 2023.1 INFO: [Project 1-570] Preparing netlist for logic optimization INFO: [Timing 38-478] Restoring timing data from binary archive. INFO: [Timing 38-479] Binary timing data restore complete. INFO: [Project 1-856] Restoring constraints from binary archive. INFO: [Project 1-853] Binary constraint restore complete. 
+// Tcl Message: Reading XDEF placement. Reading placer database... Reading XDEF routing. 
+// Tcl Message: Read XDEF Files: Time (s): cpu = 00:00:00.69 ; elapsed = 00:00:00.68 . Memory (MB): peak = 9447.496 ; gain = 0.004 ; free physical = 21893 ; free virtual = 52579 
+// Tcl Message: Restored from archive | CPU: 0.710000 secs | Memory: 4.725967 MB | 
+// Tcl Message: Finished XDEF File Restore: Time (s): cpu = 00:00:00.69 ; elapsed = 00:00:00.68 . Memory (MB): peak = 9447.496 ; gain = 0.004 ; free physical = 21893 ; free virtual = 52579 
+// Tcl Message: Generating merged BMM file for the design top 'microblaze_bd_1_wrapper'... 
+// Tcl Message: INFO: [Memdata 28-144] Successfully populated the BRAM INIT strings from the following elf files: /home/dnybo/vivado_proj/microblaze.gen/sources_1/bd/microblaze_bd_1/ip/microblaze_bd_1_microblaze_0_3/data/mb_bootloop_le.elf  
+// Tcl Message: Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 9447.496 ; gain = 0.000 ; free physical = 21893 ; free virtual = 52579 
+// Tcl Message: INFO: [Project 1-111] Unisim Transformation Summary:   A total of 96 instances were transformed.   LUT6_2 => LUT6_2 (LUT5, LUT6): 79 instances   RAM32M => RAM32M (RAMD32(x6), RAMS32(x2)): 16 instances   SRLC16E => SRL16E: 1 instance   
+// Device view-level: 0.0
+// RouteApi: Init Delay Mediator Swing Worker Finished
+// TclEventType: DRC_ADDED
+// Tcl Message: open_run: Time (s): cpu = 00:00:36 ; elapsed = 00:00:25 . Memory (MB): peak = 9716.734 ; gain = 903.910 ; free physical = 21701 ; free virtual = 52388 
+// TclEventType: DRC_ADDED
+// TclEventType: METHODOLOGY_ADDED
+// TclEventType: POWER_UPDATED
+// [GUI Memory]: 202 MB (+715kb) [00:20:35]
+// WARNING: HEventQueue.dispatchEvent() is taking  1454 ms.
+// TclEventType: TIMING_SUMMARY_UPDATED
+// WARNING: HEventQueue.dispatchEvent() is taking  2698 ms.
+// HMemoryUtils.trashcanNow. Engine heap size: 8,291 MB. GUI used memory: 151 MB. Current time: 12/15/23, 5:53:55 PM MST
+// Elapsed Time for: 'o.a': 30s
+// 'dA' command handler elapsed time: 32 seconds
+// WARNING: HEventQueue.dispatchEvent() is taking  2026 ms.
+// Elapsed time: 32 seconds
+dismissDialog("Open Implemented Design"); // bq
+selectMenu(PAResourceItoN.MainMenuMgr_FILE, "File"); // ag
+selectMenu(PAResourceItoN.MainMenuMgr_PROJECT, "Project"); // al
+selectMenu(PAResourceItoN.MainMenuMgr_TEXT_EDITOR, "Text Editor"); // al
+selectMenu(PAResourceItoN.MainMenuMgr_EXPORT, "Export"); // al
+selectMenu(PAResourceItoN.MainMenuMgr_EXPORT, "Export"); // al
+dismissMenu(PAResourceItoN.MainMenuMgr_FILE, "File"); // ag
+selectButton(RDIResource.BaseDialog_OK, "OK"); // a
+dismissDialog("Methodology Violations"); // aO
+expandTree(PAResourceItoN.NavigableTimingReportTab_TIMING_REPORT_NAVIGATION_TREE, "[Root, Check Timing]", 5); // a
+selectTree(PAResourceItoN.NavigableTimingReportTab_TIMING_REPORT_NAVIGATION_TREE, "[Root, Check Timing, no_input_delay]", 10, false); // a
+selectTree(PAResourceItoN.NavigableTimingReportTab_TIMING_REPORT_NAVIGATION_TREE, "[Root, Check Timing, no_output_delay]", 11, false); // a
+selectTree(PAResourceItoN.NavigableTimingReportTab_TIMING_REPORT_NAVIGATION_TREE, "[Root, Check Timing, multiple_clock]", 12, false); // a
+// [GUI Memory]: 223 MB (+11160kb) [00:20:55]
+selectMenu(PAResourceItoN.MainMenuMgr_FILE, "File"); // ag
+selectMenu(PAResourceItoN.MainMenuMgr_PROJECT, "Project"); // al
+selectMenu(PAResourceItoN.MainMenuMgr_CHECKPOINT, "Checkpoint"); // al
+selectMenu(PAResourceItoN.MainMenuMgr_CONSTRAINTS, "Constraints"); // al
+selectMenu(PAResourceItoN.MainMenuMgr_IP, "IP"); // al
+selectMenu(PAResourceItoN.MainMenuMgr_TEXT_EDITOR, "Text Editor"); // al
+selectMenu(PAResourceItoN.MainMenuMgr_EXPORT, "Export"); // al
+selectMenu(PAResourceItoN.MainMenuMgr_IMPORT, "Import"); // al
+selectMenu(PAResourceItoN.MainMenuMgr_TEXT_EDITOR, "Text Editor"); // al
+selectMenu(PAResourceItoN.MainMenuMgr_IMPORT, "Import"); // al
+selectMenu(PAResourceItoN.MainMenuMgr_EXPORT, "Export"); // al
+selectMenuItem(PAResourceCommand.PACommandNames_EXPORT_HARDWARE, "Export Hardware..."); // ao
+dismissMenu(PAResourceItoN.MainMenuMgr_FILE, "File"); // ag
+// Run Command: PAResourceCommand.PACommandNames_EXPORT_HARDWARE
+// Tcl (Dont Echo) Command: 'get_property pfm_name [get_files -all {/home/dnybo/vivado_proj/microblaze.srcs/sources_1/bd/microblaze_bd_1/microblaze_bd_1.bd}]'
+// Tcl (Dont Echo) Command: 'get_property pfm_name [get_files -all {/home/dnybo/vivado_proj/microblaze.srcs/sources_1/bd/microblaze_bd_1/microblaze_bd_1.bd}]'
+// Tcl (Dont Echo) Command: 'get_property pfm_name [get_files -all {/home/dnybo/vivado_proj/microblaze.srcs/sources_1/bd/microblaze_bd_1/microblaze_bd_1.bd}]'
+selectButton("NEXT", "Next >"); // JButton
+selectRadioButton(PAResourceEtoH.ExportFixedPlatformWizard_INCLUDE_BITSTREAM, "Include bitstream. This platform includes the complete hardware implementation and bitstream, in addition to the hardware specification for software tools."); // b
+selectButton("NEXT", "Next >"); // JButton
+selectButton(PAResourceEtoH.ExportFixedPlatformWizard_EXPORT_DIRECTORY, (String) null); // r
+// Elapsed time: 12 seconds
+setFolderChooser("/home/dnybo/vivado_proj");
+selectButton("NEXT", "Next >"); // JButton
+selectButton("OptionPane.button", "Yes"); // JButton
+// Tcl (Dont Echo) Command: 'get_property pfm_name [get_files -all {/home/dnybo/vivado_proj/microblaze.srcs/sources_1/bd/microblaze_bd_1/microblaze_bd_1.bd}]'
+selectButton("FINISH", "Finish"); // JButton
+// 'n' command handler elapsed time: 27 seconds
+dismissDialog("Export Hardware Platform"); // e
+// Tcl Message: write_hw_platform -fixed -include_bit -force -file /home/dnybo/vivado_proj/microblaze_bd_1_wrapper.xsa 
+// Tcl Message: INFO: [Project 1-1918] Creating Hardware Platform: /home/dnybo/vivado_proj/microblaze_bd_1_wrapper.xsa ... 
+// Tcl Message: INFO: [Project 1-1943] The Hardware Platform can be used for Hardware INFO: [Project 1-1941] Successfully created Hardware Platform: /home/dnybo/vivado_proj/microblaze_bd_1_wrapper.xsa INFO: [Hsi 55-2053] elapsed time for repository (/opt/Xilinx/Vivado/2023.1/data/embeddedsw) loading 0 seconds 
+dismissDialog("Export Hardware Platform"); // bq
+// HMemoryUtils.trashcanNow. Engine heap size: 8,287 MB. GUI used memory: 151 MB. Current time: 12/15/23, 5:54:47 PM MST
+// Elapsed time: 186 seconds
+selectMenu(PAResourceItoN.MainMenuMgr_FILE, "File"); // ag
+selectMenu(PAResourceItoN.MainMenuMgr_PROJECT, "Project"); // al
+selectMenu(PAResourceItoN.MainMenuMgr_CHECKPOINT, "Checkpoint"); // al
+selectMenu(PAResourceItoN.MainMenuMgr_IP, "IP"); // al
+selectMenu(PAResourceItoN.MainMenuMgr_TEXT_EDITOR, "Text Editor"); // al
+selectMenu(PAResourceItoN.MainMenuMgr_IMPORT, "Import"); // al
+selectMenu(PAResourceItoN.MainMenuMgr_EXPORT, "Export"); // al
+selectMenu(PAResourceItoN.MainMenuMgr_EXPORT, "Export"); // al
+selectMenuItem(PAResourceCommand.PACommandNames_EXPORT_HARDWARE, "Export Hardware..."); // ao
+dismissMenu(PAResourceItoN.MainMenuMgr_FILE, "File"); // ag
+// Run Command: PAResourceCommand.PACommandNames_EXPORT_HARDWARE
+// Tcl (Dont Echo) Command: 'get_property pfm_name [get_files -all {/home/dnybo/vivado_proj/microblaze.srcs/sources_1/bd/microblaze_bd_1/microblaze_bd_1.bd}]'
+// Tcl (Dont Echo) Command: 'get_property pfm_name [get_files -all {/home/dnybo/vivado_proj/microblaze.srcs/sources_1/bd/microblaze_bd_1/microblaze_bd_1.bd}]'
+// Tcl (Dont Echo) Command: 'get_property pfm_name [get_files -all {/home/dnybo/vivado_proj/microblaze.srcs/sources_1/bd/microblaze_bd_1/microblaze_bd_1.bd}]'
+selectButton("NEXT", "Next >"); // JButton
+selectButton("NEXT", "Next >"); // JButton
+// 'n' command handler elapsed time: 242 seconds
+// Elapsed time: 239 seconds
+dismissDialog("Export Hardware Platform"); // e
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "Project Summary", 0); // o
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, IP Integrator, Open Block Design]", 7, false); // f
+// Run Command: PAResourceCommand.PACommandNames_OPEN_BLOCK_DESIGN
+// TclEventType: RSB_OPEN_DIAGRAM
+// WARNING: HEventQueue.dispatchEvent() is taking  2003 ms.
+// Tcl Message: open_bd_design {/home/dnybo/vivado_proj/microblaze.srcs/sources_1/bd/microblaze_bd_1/microblaze_bd_1.bd} 
+dismissDialog("Open Block Design"); // bq
+// Elapsed time: 18 seconds
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "System", 0); // o
+// Run Command: PAResourceCommand.PACommandNames_CUSTOMIZE_RSB_BLOC
+// Elapsed time: 39 seconds
+selectButton(RDIResource.BaseDialog_CANCEL, "Cancel"); // a
+dismissDialog("Re-customize IP"); // m
+// Elapsed time: 896 seconds
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Program and Debug, Open Hardware Manager]", 32, true); // f - Node
+// Run Command: PAResourceCommand.PACommandNames_OPEN_HARDWARE_MANAGER
+// Tcl (Dont Echo) Command: 'rdi::info_commands get_hw_probes'
+// Tcl (Dont Echo) Command: 'load_features labtools'
+// TclEventType: LOAD_FEATURE
+// TclEventType: HW_SESSION_OPEN
+// WARNING: HEventQueue.dispatchEvent() is taking  2216 ms.
+// Tcl Message: open_hw_manager 
+closeView(PAResourceOtoP.PAViews_PROJECT_SUMMARY, "Project Summary"); // t
+// HMemoryUtils.trashcanNow. Engine heap size: 8,339 MB. GUI used memory: 155 MB. Current time: 12/15/23, 6:18:03 PM MST
+// 'K' command handler elapsed time: 3 seconds
+dismissDialog("Open Hardware Manager"); // bq
+// Elapsed time: 24 seconds
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Program and Debug, Open Hardware Manager]", 32, true); // f - Node
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Program and Debug, Open Hardware Manager]", 32, true); // f - Node
+selectButton(PAResourceOtoP.ProgramDebugTab_OPEN_TARGET, "Open target"); // g
+selectMenuItem(PAResourceCommand.PACommandNames_AUTO_CONNECT_TARGET, "Auto Connect"); // ao
+// Run Command: PAResourceCommand.PACommandNames_AUTO_CONNECT_TARGET
+// TclEventType: HW_SERVER_UPDATE
+// Tcl Message: connect_hw_server -allow_non_jtag 
+// Tcl Message: INFO: [Labtools 27-2285] Connecting to hw_server url TCP:localhost:3121 INFO: [Labtools 27-3415] Connecting to cs_server url TCP:localhost:0 INFO: [Labtools 27-3417] Launching cs_server... 
+// TclEventType: HW_SERVER_UPDATE
+// Tcl Message: INFO: [Labtools 27-2221] Launch Output:   ******** Xilinx cs_server v2023.1.0   ****** Build date   : Apr 10 2023-09:59:24     **** Build number : 2023.1.1681142364       ** Copyright 2017-2022 Xilinx, Inc. All Rights Reserved.       ** Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.    
+// TclEventType: HW_TARGET_CHANGE
+// TclEventType: HW_TARGET_CLOSE
+// TclEventType: HW_DEVICE_CHANGE
+// TclEventType: HW_SYSMON_ADD
+// TclEventType: HW_TARGET_UPDATE
+// Tcl Message: open_hw_target 
+// Tcl Message: INFO: [Labtoolstcl 44-466] Opening hw_target localhost:3121/xilinx_tcf/Digilent/210292746960A 
+// TclEventType: HW_DEVICE_CHANGE
+// Tcl Message: set_property PROGRAM.FILE {/home/dnybo/vivado_proj/microblaze.runs/impl_1/microblaze_bd_1_wrapper.bit} [get_hw_devices xc7a100t_0] 
+// Tcl Message: current_hw_device [get_hw_devices xc7a100t_0] 
+// TclEventType: HW_DEVICE_CHANGE
+// TclEventType: HW_SYSMON_CHANGE
+// TclEventType: HW_DEVICE_UPDATE
+// TclEventType: HW_DEVICE_CHANGE
+// Tcl Message: refresh_hw_device -update_hw_probes false [lindex [get_hw_devices xc7a100t_0] 0] 
+// Tcl Message: INFO: [Labtools 27-1435] Device xc7a100t (JTAG device index = 0) is not programmed (DONE status = 0). 
+dismissDialog("Auto Connect"); // bq
+selectTreeTable(PAResourceEtoH.HardwareTreePanel_HARDWARE_TREE_TABLE, "xc7a100t_0 (1) ; Not programmed", 2, "xc7a100t_0 (1)", 0, true); // m - Node
+selectTreeTable(PAResourceEtoH.HardwareTreePanel_HARDWARE_TREE_TABLE, "xc7a100t_0 (1) ; Not programmed", 2, "xc7a100t_0 (1)", 0, true, false, false, false, true, false); // m - Popup Trigger - Node
+selectMenuItem(PAResourceCommand.PACommandNames_PROGRAM_FPGA, "Program Device..."); // ao
+// Run Command: PAResourceCommand.PACommandNames_PROGRAM_FPGA
+selectButton(PAResourceOtoP.ProgramFpgaDialog_SPECIFY_BITSTREAM_FILE, (String) null); // r
+selectComboBox(RDIResource.HJFileChooserRecentListPreview_RECENT_DIRECTORIES, "/home/dnybo/git/ECEN_620_Nybo/microblaze", 2); // aa.b
+setFileChooser("/home/dnybo/git/ECEN_620_Nybo/microblaze/download.bit");
+selectButton(PAResourceOtoP.ProgramFpgaDialog_PROGRAM, "Program"); // a
+dismissDialog("Program Device"); // aP
+// TclEventType: HW_DEVICE_CHANGE
+// Tcl Message: set_property PROBES.FILE {} [get_hw_devices xc7a100t_0] 
+// Tcl Message: set_property FULL_PROBES.FILE {} [get_hw_devices xc7a100t_0] 
+// TclEventType: HW_DEVICE_CHANGE
+// Tcl Message: set_property PROGRAM.FILE {/home/dnybo/git/ECEN_620_Nybo/microblaze/download.bit} [get_hw_devices xc7a100t_0] 
+// Tcl Message: program_hw_devices [get_hw_devices xc7a100t_0] 
+// TclEventType: HW_DEVICE_CHANGE
+// Tcl Message: INFO: [Labtools 27-3164] End of startup status: HIGH 
+// TclEventType: HW_DEVICE_CHANGE
+// TclEventType: HW_SYSMON_CHANGE
+// TclEventType: HW_DEVICE_UPDATE
+// TclEventType: HW_DEVICE_CHANGE
+// TclEventType: HW_DEVICE_PROBES_CHANGE
+// TclEventType: DEBUG_PROBE_SET_CHANGE
+// TclEventType: HW_DEVICE_PROBES_CHANGE
+// Tcl Message: refresh_hw_device [lindex [get_hw_devices xc7a100t_0] 0] 
+// Tcl Message: INFO: [Labtools 27-1434] Device xc7a100t (JTAG device index = 0) is programmed with a design that has no supported debug core(s) in it. 
+// 'D' command handler elapsed time: 10 seconds
+dismissDialog("Program Device"); // bq
+// Elapsed time: 47 seconds
+selectCodeEditor("top.xdc", 156, 446); // ad

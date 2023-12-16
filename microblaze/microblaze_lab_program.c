@@ -49,9 +49,6 @@ int main() {
         if (btnStatus & 0x01) {
            SendCount = XUartLite_Send(&UartLite, (u8 *)&swStatus, 1);
         }
-        if (SendCount) {
-        	printf("%d Bytes Sent\n", SendCount);
-        }
 
 //        Read from UART and write to top 8 LEDs
 	if (XUartLite_IsReceiveEmpty(XPAR_UARTLITE_0_BASEADDR) == FALSE) {
