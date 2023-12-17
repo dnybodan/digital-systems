@@ -39,18 +39,22 @@ I wrote a software application in C which is the principal interface between the
 The result here shows about 16.2 Gbps which translates to about 162 bits per cycle which either lowers the bit precision for the full 800 MHz or lowers the bandwidth to about 5-600 MHz. Either way these are acceptable numbers. 200 MHz gets up to about 1.2 Ghz bandwidth which is significant. 
 
 **File Summary**
-/hw/axi_bus_sniffer.sv - the system verilog definition of my custom IP core
 
-/hw/tb_axi_bus_sniffer.sv - the system verilog definition of the testbench of the IP core
+[/hw/axi_bus_sniffer.sv](/hw/axi_bus_sniffer.sv) - the system verilog definition of my custom IP core
 
-/hw/dma_axi_bus_sniffer_block_design.tcl - the tcl script for building the hardware design including the block design for the full hardware system
+[/hw/tb_axi_bus_sniffer.sv](/hw/tb_axi_bus_sniffer.sv) - the system verilog definition of the testbench of the IP core
 
-/hw/axi_bus_sniffer_ip.tcl - the tcl script for building the custom IP core project in Vivado
+[/hw/dma_axi_bus_sniffer_block_design.tcl}(/hw/dma_axi_bus_sniffer_block_design.tcl) - the tcl script for building the hardware design including the block design for the full hardware system
 
-/sw/dma_axi_sniffer.c - the bare metal application script for running the hardware and measuring throughput
+[/hw/axi_bus_sniffer_ip.tcl](/hw/axi_bus_sniffer_ip.tcl) - the tcl script for building the custom IP core project in Vivado
 
-/sw/
-axi_bus_sniffer_dma_bd.pdf - a pdf of the block design already shown in the readme file but in a different layout
+[/hw/axi_bus_sniffer_dma_hw.bit](/hw/axi_bus_sniffer_dma_hw.bit) - bitstream for the hardware system
+
+[/sw/dma_axi_sniffer.c](/sw/dma_axi_sniffer.c) - the bare metal application script for running the hardware and measuring throughput
+
+[/sw/axi_bus_sniffer_app.elf](/sw/axi_bus_sniffer_app.elf) - the project excecutable and linker format file
+
+[axi_bus_sniffer_dma_bd.pdf](axi_bus_sniffer_dma_bd.pdf) - a pdf of the block design already shown in the readme file but in a different layout
 
 
 
