@@ -12,3 +12,4 @@ This repository contains the laboratory submissions for [ECEN 620]([https://gith
 * [MMCM](./mmcm/)
 * [BRAM](./bram/)
 * [Microblaze](./microblaze/)
+* [Final Project](./final_project/)
