@@ -11,15 +11,15 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="4,043.850 ns"></ZoomStartTime>
-      <ZoomEndTime time="4,063.851 ns"></ZoomEndTime>
-      <Cursor1Time time="4,053.200 ns"></Cursor1Time>
+      <ZoomStartTime time="4,030.968 ns"></ZoomStartTime>
+      <ZoomEndTime time="4,061.007 ns"></ZoomEndTime>
+      <Cursor1Time time="4,056.000 ns"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="271"></NameColumnWidth>
-      <ValueColumnWidth column_width="125"></ValueColumnWidth>
+      <ValueColumnWidth column_width="121"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="17" />
+   <WVObjectSize size="18" />
    <wvobject type="logic" fp_name="/axi_dma_sniffer_tb/clk">
       <obj_property name="ElementShortName">clk</obj_property>
       <obj_property name="ObjectShortName">clk</obj_property>
@@ -49,8 +49,8 @@
       <obj_property name="ObjectShortName">bitrate_output[31:0]</obj_property>
    </wvobject>
    <wvobject type="array" fp_name="/axi_dma_sniffer_tb/expected_bitrate">
-      <obj_property name="ElementShortName">expected_bitrate[31:0]</obj_property>
-      <obj_property name="ObjectShortName">expected_bitrate[31:0]</obj_property>
+      <obj_property name="ElementShortName">expected_bitrate[63:0]</obj_property>
+      <obj_property name="ObjectShortName">expected_bitrate[63:0]</obj_property>
    </wvobject>
    <wvobject type="array" fp_name="/axi_dma_sniffer_tb/DATA_WIDTH">
       <obj_property name="ElementShortName">DATA_WIDTH[31:0]</obj_property>
@@ -87,5 +87,9 @@
    <wvobject type="array" fp_name="/axi_dma_sniffer_tb/sniffer/bit_rate">
       <obj_property name="ElementShortName">bit_rate[31:0]</obj_property>
       <obj_property name="ObjectShortName">bit_rate[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/axi_dma_sniffer_tb/sniffer/debug_out">
+      <obj_property name="ElementShortName">debug_out</obj_property>
+      <obj_property name="ObjectShortName">debug_out</obj_property>
    </wvobject>
 </wave_config>

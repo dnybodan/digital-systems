@@ -9,7 +9,7 @@
 // Project Name: 
 // Target Devices: 
 // Tool Versions: 
-// Description: 
+// Description: This is a AXI bus sniffer that can be used to measure the bit rate of an AXI bus
 // 
 // Dependencies: 
 // 

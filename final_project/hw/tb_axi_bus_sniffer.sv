@@ -9,7 +9,7 @@
 // Project Name: 
 // Target Devices: 
 // Tool Versions: 
-// Description: 
+// Description: This is a testbench for the AXI bus sniffer
 // 
 // Dependencies: 
 // 

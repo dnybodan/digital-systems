@@ -4,12 +4,15 @@
 
 **Summary of Major Challenges**
 
-The main challenges for this project came from integrating the DDR4 in the PL RAM, learning to use the Direct Memory Access block, and finally creating the HDL AXI bus sniffer in system verilog. Each of these tasks took a significant chunk of time. 
-
+The main challenges for this project came from integrating the DDR4 in the PL RAM, learning to use the Direct Memory Access block, and finally creating/debugging the HDL AXI bus sniffer in system verilog. Each of these tasks took a significant chunk of time but by far the hardest part of this lab was that when I needed to make a change to my IP there was a 30 minute build time before I could test my changes. This made debugging very difficult and time consuming. I ended up adding some extra ports to my IP so that I could debug the design after building the hardware. I ended up using one of these debug signals to execute the behavior I wanted from the IP. 
 
 **Warnings**:
 
 No warnings to report
+
+**Resources**:
+
+29635 LUT, 3108 LUTRAM, 38484 FF, 43 BRAM, 3 DSP, 119 IO, 5 BUFG, 1 MMCM, 3 PLL
 
 **Timing**:
 
@@ -21,9 +24,20 @@ WNS 0.227
 
 **Project Summary**:
 
-The main objective of this project is to detect throughput of a DMA transfer form DDR4 memory in the RFSoC 4x2 in order to predict the maximum bandwidth that can be supplied to the DAC utilizing this techinique. Theoretically if the AXI bus is clocked at 200 MHz and the bitwidth fo the data bus is 256 then 256 bits can be transfered to the DAC every clock cycle. The DDR4 memory should be capable of achieving this data rate utilizing 64 bit data reads at 1200 MHz filling a data buffer which then gets transfered to the device over AXI bus. Ideally this achieves a bandwidth of 1.6 GHz. 
+The main objective of this project is to detect throughput of a DMA transfer form DDR4 memory in the RFSoC 4x2 in order to predict the maximum bandwidth that can be supplied to the DAC utilizing this techinique. Ideally this achieves a RF bandwidth of 800 MHz with a 256 bit axi bus clocked at 100 MHz and a RFDC which splits each 256 bits into a 16 bit sample buffer. Later I will clock the AXI bus at 200 MHz and get a RF bandwidth of 1.6 GHz.
 
-The way I will be measuring this is in two ways. One will be to simply time the transfer using a timer staring before the transfer is initiated and after the transfer completes. I will then divide the number of bits transfered to get the bit rate. The other way I will measure this is using a custom IP block which counts the number of bits transfered on the axi bus while tvalid is asserted outputing a bit rate throughout the transfer. This will be reported to the processing system utilizing a GPIO block connected directly to my custom AXI sniffer IP. 
+Right now the interaction the user has with the project is through the software application interfacing directly with the DMA core, GPIOs, custom core, and timers. By default the program will just run through a transfer as soon as the program is started and report the results via stdout(UART). The results of this experiment showed that the DMA transfer is capable of achieving a throughput 168 bits per clock cycle achieving a max bandwidth of around 600 MHz which is around 75% of the theoretical maximum. This is a very good result and shows that the DDR4 memory is capable of supplying the DAC with enough data to achieve the desired RF bandwidth. When clocking at 200 MHz the throughput increases to give around 1.2 GHz of RF bandwidth which is also very good.
 
-The AXI bus sniffer was created in Vivado 2023.1 and was tested with a custom test bench I wrote in tandem.
-The block design can be rebuild and viewed using the .tcl script provided. 
+The custom core I created is an AXI bus sniffer which was created in Vivado 2023.1 and was tested with a custom test bench I wrote in tandem called tb_axi_bust_sniffer.sv. This core attaches to the transfer lines of an AXI bus and detects the number of bits going through. It also reports the clock cycles and can also read the bytes going through the bus, however this part is not necessary for the simple throughput test. 
+
+I wrote a software application in C which is the principal interface between the hardware and the user. This application is responsible for configuring the DMA core, GPIOs, and timers in bare metal. The application is also responsible for configuring the DMA core to transfer data from the DDR4 memory to the DAC and reporting the bitrate of the transfter from the sniffer core which is accessible via GPIO blocks reading registers directly from the core.
+
+I have included the C file I wrote in the sw directory of this repo. I have also included a screenshot of the results incase the user does not have access to an RFSoC4x2 board. Below is the screenshot. 
+
+The hardware block design can be rebuild and viewed using the .tcl script provided in the hw directory of this repo.
+
+The custom IP can also be rebuilt using the .tcl script provided in the hw directory of this repo.
+
+A bitfile with the embedded software application can also be found in the hw directory of this repo.
+
+
