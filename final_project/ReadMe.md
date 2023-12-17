@@ -50,11 +50,13 @@ The result here shows about 16.2 Gbps which translates to about 162 bits per cyc
 
 [/hw/axi_bus_sniffer_dma_hw.bit](/hw/axi_bus_sniffer_dma_hw.bit) - bitstream for the hardware system
 
+[/hw/axi_bus_sniffer_dma_hw.xsa](/hw/axi_bus_sniffer_dma_hw.xsa) - .xsa file for creating a new platform project for software application 
+
 [/sw/dma_axi_sniffer.c](/sw/dma_axi_sniffer.c) - the bare metal application script for running the hardware and measuring throughput
 
 [/sw/axi_bus_sniffer_app.elf](/sw/axi_bus_sniffer_app.elf) - the project excecutable and linker format file
 
 [axi_bus_sniffer_dma_bd.pdf](axi_bus_sniffer_dma_bd.pdf) - a pdf of the block design already shown in the readme file but in a different layout
 
-
+The project was created using Vivado 2023.1 and Vitis 2023.1. To run this project it the bit file will need to be downloaded as well as the .elf file run. The way to do this properly would be to create a new software application with a platform project created from the .xsa file in the /hw/ directory of this repo, then copy in the .c file in the /sw/ directory of this repo. Then build the project and run on the board. For some reason creating a .bit file with the software embedded was not generating using Vitis 2023.1, so the above procedure will need to be followed if you want to run this on an RFSoC 4x2. Otherwise the output is pictured above. 
 
