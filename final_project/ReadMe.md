@@ -44,7 +44,7 @@ The result here shows about 16.2 Gbps which translates to about 162 bits per cyc
 
 [/hw/tb_axi_bus_sniffer.sv](/hw/tb_axi_bus_sniffer.sv) - the system verilog definition of the testbench of the IP core
 
-[/hw/dma_axi_bus_sniffer_block_design.tcl}(/hw/dma_axi_bus_sniffer_block_design.tcl) - the tcl script for building the hardware design including the block design for the full hardware system
+[/hw/dma_axi_bus_sniffer_block_design.tcl](/hw/dma_axi_bus_sniffer_block_design.tcl) - the tcl script for building the hardware design including the block design for the full hardware system
 
 [/hw/axi_bus_sniffer_ip.tcl](/hw/axi_bus_sniffer_ip.tcl) - the tcl script for building the custom IP core project in Vivado
 
