@@ -36,14 +36,19 @@ I wrote a software application in C which is the principal interface between the
 
 <img width="903" alt="Screenshot 2023-12-17 at 1 55 01 AM" src="https://github.com/dnybodan/ECEN_620_Nybo/assets/46764329/70cf263c-211e-4a78-abfd-01e444707f7f">
 
-
+The result here shows about 16.2 Gbps which translates to about 162 bits per cycle which either lowers the bit precision for the full 800 MHz or lowers the bandwidth to about 5-600 MHz. Either way these are acceptable numbers. 200 MHz gets up to about 1.2 Ghz bandwidth which is significant. 
 
 **File Summary**
 /hw/axi_bus_sniffer.sv - the system verilog definition of my custom IP core
+
 /hw/tb_axi_bus_sniffer.sv - the system verilog definition of the testbench of the IP core
+
 /hw/dma_axi_bus_sniffer_block_design.tcl - the tcl script for building the hardware design including the block design for the full hardware system
+
 /hw/axi_bus_sniffer_ip.tcl - the tcl script for building the custom IP core project in Vivado
+
 /sw/dma_axi_sniffer.c - the bare metal application script for running the hardware and measuring throughput
+
 /sw/
 axi_bus_sniffer_dma_bd.pdf - a pdf of the block design already shown in the readme file but in a different layout
 
