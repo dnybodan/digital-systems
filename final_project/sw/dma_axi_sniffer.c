@@ -30,7 +30,7 @@
 XAxiDma dma_ctl;                                         // AXI DMA driver instance
 XAxiDma_Config *dma_cfg;                                 // AXI DMA Config Params
 
-XGpio bitrate,debug_counter,valid_clocks; 							 // The Instance of the GPIO Driver
+XGpio bitrate,debug_counter,valid_clocks; 		 // The Instance of the GPIO Driver
 
 int main ()
 {
