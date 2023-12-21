@@ -1,10 +1,6 @@
 # Daniel Nybo 
 
-**DDR4 DMA Transfer with AXI Bus Sniffer** - *Approx 50 Hours Spent*
-
-**Summary of Major Challenges**
-
-The main challenges for this project came from integrating the DDR4 in the PL RAM, learning to use the Direct Memory Access block, and finally creating/debugging the HDL AXI bus sniffer in system verilog. Each of these tasks took a significant chunk of time but by far the hardest part of this lab was that when I needed to make a change to my IP there was a 30 minute build time before I could test my changes. This made debugging very difficult and time consuming. I ended up adding some extra ports to my IP so that I could debug the design after building the hardware. I ended up using one of these debug signals to execute the behavior I wanted from the IP. 
+**DDR4 DMA Transfer with AXI Bus Sniffer** 
 
 **Warnings**:
 
