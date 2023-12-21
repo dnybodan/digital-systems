@@ -1,8 +1,6 @@
-# ECEN 620: Daniel Nybo
+# Digital Design Repo for Daniel Nybo
 
-This repository contains the laboratory submissions for [ECEN 620]([https://github.com/wirthlin/ECEN_620](https://github.com/byu-cpe/ECEN_620/tree/main)) for Daniel Nybo. 
-
-## Assignments
+## Designs
 
 * [UART Transmitter](./uart_transmitter/)
 * [UART Receiver](./uart_receiver/)
