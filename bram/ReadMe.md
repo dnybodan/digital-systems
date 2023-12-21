@@ -1,12 +1,6 @@
 # Daniel Nybo 
 
-**BRAM** - *Approx 10 Hours Spent*
-
-**Summary of Major Challenges**
-
-The main challenge I faced building this was making sure all the timing was correct for opperations such as reads/writes from BRAMs. I also spent some time reading the documentation on BRAMs to make sure I instantiated them correctly.
-
-## Assignment Specific Responses
+**BRAM**
 
 **Resources**:
 +-------------------------+------+-------+------------+-----------+-------+
@@ -21,7 +15,7 @@ The main challenge I faced building this was making sure all the timing was corr
 | F7 Muxes                |    1 |     0 |          0 |     31700 | <0.01 |
 | F8 Muxes                |    0 |     0 |          0 |     15850 |  0.00 |
 +-------------------------+------+-------+------------+-----------+-------+
-   asdf 
+
 +-------------------+------+-------+------------+-----------+-------+
 |     Site Type     | Used | Fixed | Prohibited | Available | Util% |
 +-------------------+------+-------+------------+-----------+-------+
@@ -54,7 +48,7 @@ The main challenge I faced building this was making sure all the timing was corr
 
 **Warnings**:
 
-No warnings to report
+No warnings
 
 **Timing**:
 
