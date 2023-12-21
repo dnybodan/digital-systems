@@ -1,6 +1,4 @@
-# Daniel Nybo 
-
-**microblaze**
+# microblaze
 
 This project implements an ip integrator design with the microblaze soft processor. It does basic UART, GPIO and clock interfaces to demonstrate proficiency in IP integrator and resource usage.
 
