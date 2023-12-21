@@ -1,12 +1,6 @@
-# Daniel Nybo 
+# Uart Receiver and Testbench** 
 
-**Uart Receiver and Testbench** - *Approx 13 Hours Spent*
-
-**Summary of Major Challenges**
-
-My major challenges were just getting used to vhdl and how the syntax works. It wasn't super difficult but there were a few hicups as I went through translating and then also creating the seven-segment controller.
-
-## Assignment Specific Responses
+VHDL implementation of UART Receiver and Custom testbench
 
 **Resources**:
 
