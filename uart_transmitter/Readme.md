@@ -1,12 +1,6 @@
-# Daniel Nybo 
+# Uart Transmitter** 
 
-**Uart Transmitter** - *Approx 8 Hours Spent*
-
-**Summary of Major Challenges**
-
-The main challenges I faced were first just to remeber how to write HDL and some of the nuances of the language. I also spent some time learning how to complete a gitignore file as well as a makefile, and synth script.
-
-## Assignment Specific Responses
+Custom built UART transmitter
 
 **Resources**:
 
