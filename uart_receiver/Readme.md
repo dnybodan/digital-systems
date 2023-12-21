@@ -1,12 +1,6 @@
-# Daniel Nybo 
+# Uart Receiver and Testbench
 
-**Uart Receiver and Testbench** - *Approx 30 Hours Spent*
-
-**Summary of Major Challenges**
-
-The main challenges I faced were with trying to test my Verilog 95 code without an existing testbench and tx model. This made it difficult to decide whether my test bench, my tx model, or my reciever was the culprit of bugs during development. I also had a bit of a hard time debugging the test benches, but not nearly as much time as it took to just get the reciever working.
-
-## Assignment Specific Responses
+Custom UART receiver module and accompanying test bench for verification
 
 **Resources**:
 
