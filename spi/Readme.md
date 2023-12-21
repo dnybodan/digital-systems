@@ -1,6 +1,6 @@
-# Daniel Nybo 
+# SPI Controller
 
-**SPI Controller**
+Custom implementation of SPI controller interfacing with accelerometer on Nexys4 DDR board
 
 **Resources**:
 | Site Type             | Used | Fixed | Prohibited | Available | Util% |
