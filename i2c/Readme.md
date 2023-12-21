@@ -1,6 +1,7 @@
-# Daniel Nybo 
+# I2C Controller
 
-**I2C Controller** - 
+Custom implementation of I2C controller in System Verilog interfacing with a temp sensor on Nexy4 DDR board
+
 ## Resources
 | Site Type             | Used | Fixed | Prohibited | Available | Util% |
 |-----------------------|------|-------|------------|-----------|-------|
