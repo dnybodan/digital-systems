@@ -1,45 +1,36 @@
 # Daniel Nybo 
 
-**I2C Controller** - *Approx 30 Hours Spent*
-
-**Discussion**
-
-The I2C has many timing requirements which made it really difficult to make sure timing constraints were met. I also spend a considerable amount of time figuring out how to properly impliment the different byte sequences/repeated starts for read and write opperations.
-
+**I2C Controller** - 
 ## Resources
+| Site Type             | Used | Fixed | Prohibited | Available | Util% |
+|-----------------------|------|-------|------------|-----------|-------|
+| Slice LUTs            | 224  | 0     | 0          | 63400     | 0.35  |
+| LUT as Logic          | 224  | 0     | 0          | 63400     | 0.35  |
+| LUT as Memory         | 0    | 0     | 0          | 19000     | 0.00  |
+| Slice Registers       | 208  | 0     | 0          | 126800    | 0.16  |
+| Register as Flip Flop | 208  | 0     | 0          | 126800    | 0.16  |
+| Register as Latch     | 0    | 0     | 0          | 126800    | 0.00  |
+| F7 Muxes              | 5    | 0     | 0          | 31700     | 0.02  |
+| F8 Muxes              | 0    | 0     | 0          | 15850     | 0.00  |
 
-+-------------------------+------+-------+------------+-----------+-------+
-|        Site Type        | Used | Fixed | Prohibited | Available | Util% |
-+-------------------------+------+-------+------------+-----------+-------+
-| Slice LUTs              |  224 |     0 |          0 |     63400 |  0.35 |
-|   LUT as Logic          |  224 |     0 |          0 |     63400 |  0.35 |
-|   LUT as Memory         |    0 |     0 |          0 |     19000 |  0.00 |
-| Slice Registers         |  208 |     0 |          0 |    126800 |  0.16 |
-|   Register as Flip Flop |  208 |     0 |          0 |    126800 |  0.16 |
-|   Register as Latch     |    0 |     0 |          0 |    126800 |  0.00 |
-| F7 Muxes                |    5 |     0 |          0 |     31700 |  0.02 |
-| F8 Muxes                |    0 |     0 |          0 |     15850 |  0.00 |
-+-------------------------+------+-------+------------+-----------+-------+
+| Site Type                      | Used | Fixed | Prohibited | Available | Util% |
+|--------------------------------|------|-------|------------|-----------|-------|
+| Bonded IOB                     | 56   | 56    | 0          | 210       | 26.67 |
+| IOB Master Pads                | 28   |       |            |           |       |
+| IOB Slave Pads                 | 25   |       |            |           |       |
+| Bonded IPADs                   | 0    | 0     | 0          | 2         | 0.00  |
+| PHY_CONTROL                    | 0    | 0     | 0          | 6         | 0.00  |
+| PHASER_REF                     | 0    | 0     | 0          | 6         | 0.00  |
+| OUT_FIFO                       | 0    | 0     | 0          | 24        | 0.00  |
+| IN_FIFO                        | 0    | 0     | 0          | 24        | 0.00  |
+| IDELAYCTRL                     | 0    | 0     | 0          | 6         | 0.00  |
+| IBUFDS                         | 0    | 0     | 0          | 202       | 0.00  |
+| PHASER_OUT/PHASER_OUT_PHY      | 0    | 0     | 0          | 24        | 0.00  |
+| PHASER_IN/PHASER_IN_PHY        | 0    | 0     | 0          | 24        | 0.00  |
+| IDELAYE2/IDELAYE2_FINEDELAY    | 0    | 0     | 0          | 300       | 0.00  |
+| ILOGIC                         | 0    | 0     | 0          | 210       | 0.00  |
+| OLOGIC                         | 0    | 0     | 0          | 210       | 0.00  |
 
-+-----------------------------+------+-------+------------+-----------+-------+
-|          Site Type          | Used | Fixed | Prohibited | Available | Util% |
-+-----------------------------+------+-------+------------+-----------+-------+
-| Bonded IOB                  |   56 |    56 |          0 |       210 | 26.67 |
-|   IOB Master Pads           |   28 |       |            |           |       |
-|   IOB Slave Pads            |   25 |       |            |           |       |
-| Bonded IPADs                |    0 |     0 |          0 |         2 |  0.00 |
-| PHY_CONTROL                 |    0 |     0 |          0 |         6 |  0.00 |
-| PHASER_REF                  |    0 |     0 |          0 |         6 |  0.00 |
-| OUT_FIFO                    |    0 |     0 |          0 |        24 |  0.00 |
-| IN_FIFO                     |    0 |     0 |          0 |        24 |  0.00 |
-| IDELAYCTRL                  |    0 |     0 |          0 |         6 |  0.00 |
-| IBUFDS                      |    0 |     0 |          0 |       202 |  0.00 |
-| PHASER_OUT/PHASER_OUT_PHY   |    0 |     0 |          0 |        24 |  0.00 |
-| PHASER_IN/PHASER_IN_PHY     |    0 |     0 |          0 |        24 |  0.00 |
-| IDELAYE2/IDELAYE2_FINEDELAY |    0 |     0 |          0 |       300 |  0.00 |
-| ILOGIC                      |    0 |     0 |          0 |       210 |  0.00 |
-| OLOGIC                      |    0 |     0 |          0 |       210 |  0.00 |
-+-----------------------------+------+-------+------------+-----------+-------+
 
 ## Warnings
 
