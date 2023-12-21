@@ -3,7 +3,6 @@
 * Module: debounce
 *
 * Author: Daniel Nybo
-* Class: ECEN 620
 * Date: September 19, 2023
 *
 * Description: This module debounces a noisyInput input signal. It also provides
