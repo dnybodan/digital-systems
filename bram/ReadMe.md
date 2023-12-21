@@ -1,6 +1,4 @@
-# Daniel Nybo 
-
-**BRAM**
+# BRAM
 
 This project demonstrates two different ways to instantiate a BRAM in an FPGA including usage and integration with custom UART designs. 
 
