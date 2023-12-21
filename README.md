@@ -10,4 +10,4 @@
 * [MMCM](./mmcm/)
 * [BRAM](./bram/)
 * [Microblaze](./microblaze/)
-* [DDR4 DMA with AXI IP](./ddr4_dma_with_custom_ipt/)
+* [DDR4 DMA with AXI IP](./ddr4_dma_with_custom_ip/)
