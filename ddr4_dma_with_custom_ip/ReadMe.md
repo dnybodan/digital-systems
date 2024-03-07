@@ -16,7 +16,7 @@ I wrote a software application in C which is the principal interface between the
 
 <img width="903" alt="Screenshot 2023-12-17 at 1 55 01 AM" src="https://github.com/dnybodan/ECEN_620_Nybo/assets/46764329/70cf263c-211e-4a78-abfd-01e444707f7f">
 
-The result here shows about 16.2 Gbps which translates to about 162 bits per cycle which either lowers the bit precision for the full 800 MHz or lowers the bandwidth to about 5-600 MHz. Either way these are acceptable numbers. 200 MHz gets up to about 1.2 Ghz bandwidth which is significant. 
+The result here shows about 16.2 Gbps which translates to about 162 bits per cycle which either lowers the bit precision for the full 800 MHz or lowers the bandwidth to about 5-600 MHz. Either way these are acceptable numbers. When clocking the AXI bus with 200 MHz the possible bandwidth goes up to about 1.2 Ghz bandwidth. 
 
 **File Summary**
 
